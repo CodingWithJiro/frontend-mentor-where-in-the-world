@@ -1,5 +1,13 @@
+import SkipLink from './components/SkipLink';
+import Theme from './components/Theme';
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <SkipLink />
+      <Theme />
+    </>
+  );
 };
 
 export default App;
