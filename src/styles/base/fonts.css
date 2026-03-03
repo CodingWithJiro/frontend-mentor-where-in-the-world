@@ -1,0 +1,12 @@
+@font-face {
+  font-display: swap;
+  font-family: "INSERT_FONT_NAME";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../LINK/TO/FONT") format("woff2");
+  /* 
+  NOTE:
+  - woff2 is considered modern best practice 
+  - copy pase @font-face code blocks from GWFH
+  */
+}
