@@ -23,7 +23,7 @@
 [![Fetch API](https://img.shields.io/badge/REST%20Countries%20API-1976d2?style=for-the-badge)](https://restcountries.com/)
 [![Google Lighthouse](https://img.shields.io/badge/Lighthouse-00B0FF?style=for-the-badge&logo=lighthouse&logoColor=white)](/docs/downloads/lighthouse-performance-report.pdf)
 
-![Status](https://img.shields.io/badge/status-complete-brightgreen)
+![Status](https://img.shields.io/badge/status-incomplete-orange)
 ![Learning Path](https://img.shields.io/badge/learning%20path-month%2011-blue)
 ![Views](https://visitor-badge.laobi.icu/badge?page_id=CodingWithJiro.frontend-mentor-where-in-the-world&left_text=repo%20views)
 
