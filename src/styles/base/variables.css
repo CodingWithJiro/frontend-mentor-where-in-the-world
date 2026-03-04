@@ -1,0 +1,22 @@
+/** || VARIABLES */
+/* CHANGE THE DATA BELOW AS NEEDED */
+:root {
+  /* FONTS */
+  --FF: "Arial", sans-serif;
+  --FS: 1rem;
+
+  /* COLORS */
+  --FONT-COLOR: #000;
+  --BGCOLOR: #fff;
+  --BGCOLOR-THEME-BUTTON: #f1f1f1;
+  --BGCOLOR-THEME-BUTTON-AFTER: #333;
+  --COLOR-THEME-ICON: #333;
+  --BORDER-COLOR-THEME-BUTTON: #ccc;
+  --SHADOW-COLOR-THEME: rgba(0, 0, 0, 0.3);
+
+  /* BORDERS */
+  --BORDER-THEME-BUTTON: 1px solid var(--BORDER-COLOR-THEME-BUTTON);
+
+  /* SHADOWS */
+  --BOX-SHADOW-THEME: 0 0 3px var(--SHADOW-COLOR-THEME);
+}
