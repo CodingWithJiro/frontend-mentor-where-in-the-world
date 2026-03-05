@@ -5,12 +5,12 @@ const ThemeIconLight = () => {
       viewBox="0 0 24 24"
       width="24"
       height="24"
-      className="text-(--COLOR-BG-THEME-ICON)"
+      className="block text-(--COLOR-BG-THEME-ICON)"
       aria-hidden="true"
       data-testid="theme-icon-light"
     >
       <path
-        d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79z"
+        d="M20 13.79A9 9 0 0 1 10.21 4 7 7 0 1 0 20 13.79z"
         fill="none"
         stroke="currentColor"
         stroke-width="1"
