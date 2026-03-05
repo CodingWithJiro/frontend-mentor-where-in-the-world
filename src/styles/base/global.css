@@ -5,6 +5,6 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: var(--BGCOLOR);
-  color: var(--FONT-COLOR);
+  background-color: var(--COLOR-BG-PAGE);
+  color: var(--COLOR-TEXT-PRIMARY);
 }

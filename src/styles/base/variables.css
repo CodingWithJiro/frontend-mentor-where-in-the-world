@@ -3,7 +3,7 @@
   --FF: 'Nunito Sans', sans-serif;
   --FS: 1rem;
 
-  /* COLORS */
+  /* COLOR TOKENS */
   --BLUE-900: hsl(209, 23%, 22%);
   --BLUE-950: hsl(207, 26%, 17%);
   --GREY-950: hsl(200, 15%, 8%);
@@ -11,17 +11,9 @@
   --GREY-50: hsl(0, 0%, 99%);
   --WHITE: hsl(0, 100%, 100%);
 
-  --FONT-COLOR: #000;
-  --BGCOLOR: #fff;
-  --BGCOLOR-THEME-BUTTON: #f1f1f1;
-  --BGCOLOR-THEME-BUTTON-AFTER: #333;
-  --COLOR-THEME-ICON: #333;
-  --BORDER-COLOR-THEME-BUTTON: #ccc;
-  --SHADOW-COLOR-THEME: rgba(0, 0, 0, 0.3);
+  /* BACKGROUND-COLORS */
+  --COLOR-BG-PAGE: var(--WHITE);
 
-  /* BORDERS */
-  --BORDER-THEME-BUTTON: 1px solid var(--BORDER-COLOR-THEME-BUTTON);
-
-  /* SHADOWS */
-  --BOX-SHADOW-THEME: 0 0 3px var(--SHADOW-COLOR-THEME);
+  /* FONT-COLORS */
+  --COLOR-TEXT-PRIMARY: var(--GREY-950);
 }
