@@ -1,6 +1,7 @@
 .dark {
   /* BACKGROUND-COLORS */
   --COLOR-BG-PAGE: var(--BLUE-950);
+  --COLOR-BG-THEME-ICON: var(--WHITE);
 
   /* FONT-COLORS */
   --COLOR-TEXT-PRIMARY: var(--GREY-950);

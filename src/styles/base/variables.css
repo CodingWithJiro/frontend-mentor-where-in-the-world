@@ -13,6 +13,7 @@
 
   /* BACKGROUND-COLORS */
   --COLOR-BG-PAGE: var(--WHITE);
+  --COLOR-BG-THEME-ICON: var(--GREY-950);
 
   /* FONT-COLORS */
   --COLOR-TEXT-PRIMARY: var(--GREY-950);
