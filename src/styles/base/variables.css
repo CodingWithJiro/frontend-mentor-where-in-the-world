@@ -4,6 +4,13 @@
   --FS: 1rem;
 
   /* COLORS */
+  --BLUE-900: hsl(209, 23%, 22%);
+  --BLUE-950: hsl(207, 26%, 17%);
+  --GREY-950: hsl(200, 15%, 8%);
+  --GREY-400: hsl(0, 0%, 50%);
+  --GREY-50: hsl(0, 0%, 99%);
+  --WHITE: hsl(0, 100%, 100%);
+
   --FONT-COLOR: #000;
   --BGCOLOR: #fff;
   --BGCOLOR-THEME-BUTTON: #f1f1f1;
