@@ -5,4 +5,5 @@
 
   /* FONT-COLORS */
   --COLOR-TEXT-PRIMARY: var(--GREY-950);
+  --COLOR-TEXT-SECONDARY: var(--GREY-50);
 }
