@@ -1,22 +1,32 @@
-/** || VARIABLES */
-/* CHANGE THE DATA BELOW AS NEEDED */
 :root {
   /* FONTS */
-  --FF: "Arial", sans-serif;
+  --FF: 'Nunito Sans', sans-serif;
   --FS: 1rem;
 
-  /* COLORS */
-  --FONT-COLOR: #000;
-  --BGCOLOR: #fff;
-  --BGCOLOR-THEME-BUTTON: #f1f1f1;
-  --BGCOLOR-THEME-BUTTON-AFTER: #333;
-  --COLOR-THEME-ICON: #333;
-  --BORDER-COLOR-THEME-BUTTON: #ccc;
-  --SHADOW-COLOR-THEME: rgba(0, 0, 0, 0.3);
+  /* COLOR TOKENS */
+  --BLUE-900: hsl(209, 23%, 22%);
+  --BLUE-950: hsl(207, 26%, 17%);
+  --GREY-950: hsl(200, 15%, 8%);
+  --GREY-400: hsl(0, 0%, 50%);
+  --GREY-50: hsl(0, 0%, 99%);
+  --WHITE: hsl(0, 100%, 100%);
 
-  /* BORDERS */
-  --BORDER-THEME-BUTTON: 1px solid var(--BORDER-COLOR-THEME-BUTTON);
+  /* BACKGROUND-COLORS */
+  --COLOR-BG-PAGE: var(--GREY-50);
+  --COLOR-BG-CARD-PRIMARY: var(--WHITE);
+  --COLOR-BG-THEME-ICON: var(--GREY-950);
+
+  /* FONT-COLORS */
+  --COLOR-TEXT-PRIMARY: var(--GREY-950);
+  --COLOR-TEXT-SECONDARY: var(--BLUE-950);
+
+  /* SHADOW-COLORS */
+  --COLOR-SHADOW-PRIMARY: 0deg 0% 74%;
 
   /* SHADOWS */
-  --BOX-SHADOW-THEME: 0 0 3px var(--SHADOW-COLOR-THEME);
+  --SHADOW-CARD-PRIMARY:
+    0px 0.7px 0.7px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.35),
+    0px 1.5px 1.4px -1.2px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.29),
+    0px 4.1px 3.8px -2.5px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.23),
+    0px 10.9px 10.2px -3.7px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.17);
 }
