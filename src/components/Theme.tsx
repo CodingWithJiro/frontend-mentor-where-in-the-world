@@ -6,7 +6,7 @@ const Theme = () => {
   const { theme, handleThemeChange } = useTheme();
 
   return (
-    <div className="flex items-start justify-center gap-1 motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out">
+    <div className="flex items-center justify-center gap-1">
       <ThemeIcon theme={theme} />
       <ThemeButton onThemeChange={handleThemeChange} theme={theme} />
     </div>
