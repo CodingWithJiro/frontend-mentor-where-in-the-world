@@ -12,7 +12,7 @@ const ThemeButton = ({ onThemeChange, theme }: ThemeButtonProps) => {
 
   return (
     <button
-      className="relative flex cursor-pointer items-center rounded-full font-(family-name:--FF) text-[0.75rem] font-semibold text-(--COLOR-TEXT-SECONDARY) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out"
+      className="relative flex cursor-pointer items-center rounded-full font-(family-name:--FF) text-[clamp(0.75rem,0rem+1.5625vw,1rem)] font-semibold text-(--COLOR-TEXT-SECONDARY)"
       type="button"
       aria-label={label}
       aria-pressed={isPressed}
