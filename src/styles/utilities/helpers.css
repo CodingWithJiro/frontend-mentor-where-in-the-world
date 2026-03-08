@@ -9,5 +9,5 @@
   --COLOR-TEXT-SECONDARY: var(--GREY-50);
 
   /* SHADOW-COLORS */
-  --COLOR-SHADOW-PRIMARY: 209deg 40% 9%;
+  --COLOR-SHADOW-PRIMARY: hsla(209deg, 40%, 9%, 0.1);
 }

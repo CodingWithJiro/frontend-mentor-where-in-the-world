@@ -21,12 +21,8 @@
   --COLOR-TEXT-SECONDARY: var(--BLUE-950);
 
   /* SHADOW-COLORS */
-  --COLOR-SHADOW-PRIMARY: 0deg 0% 74%;
+  --COLOR-SHADOW-PRIMARY: hsla(0, 0%, 0%, 0.1);
 
   /* SHADOWS */
-  --SHADOW-CARD-PRIMARY:
-    0px 0.7px 0.7px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.35),
-    0px 1.5px 1.4px -1.2px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.29),
-    0px 4.1px 3.8px -2.5px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.23),
-    0px 10.9px 10.2px -3.7px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.17);
+  --SHADOW-CARD-PRIMARY: 0 1px 6px var(--COLOR-SHADOW-PRIMARY);
 }
