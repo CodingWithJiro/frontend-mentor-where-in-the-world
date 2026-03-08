@@ -1,8 +1,6 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
-type MainProps = {
-  children: ReactNode;
-};
+type MainProps = PropsWithChildren;
 
 const Main = ({ children }: MainProps) => {
   return <main>{children}</main>;
