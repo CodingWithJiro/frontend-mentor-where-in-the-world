@@ -7,6 +7,7 @@
   /* FONT-COLORS */
   --COLOR-TEXT-PRIMARY: var(--WHITE);
   --COLOR-TEXT-SECONDARY: var(--GREY-50);
+  --COLOR-TEXT-TERTIARY: var(--GREY-50);
 
   /* SHADOW-COLORS */
   --COLOR-SHADOW-PRIMARY: hsla(209deg, 40%, 9%, 0.1);
