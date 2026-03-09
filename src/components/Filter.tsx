@@ -1,20 +1,17 @@
 const Filter = () => {
   return (
     <div>
-      <label htmlFor="select-region" className="sr-only">
-        Filter by region.
-      </label>
+      <button type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span>Filter by Region</span>
+      </button>
 
-      <select name="region" id="select-region" value="">
-        <option value="" disabled hidden>
-          Filter by Region
-        </option>
-        <option value="africa">Africa</option>
-        <option value="america">America</option>
-        <option value="asia">Asia</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
-      </select>
+      <ul role="listbox">
+        <li role="option">Africa</li>
+        <li role="option">America</li>
+        <li role="option">Asia</li>
+        <li role="option">Europe</li>
+        <li role="option">Oceania</li>
+      </ul>
     </div>
   );
 };
