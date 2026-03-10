@@ -1,11 +1,11 @@
 const Filter = () => {
   return (
-    <div className="relative max-w-50 rounded-sm font-(family-name:--FF) font-light shadow-(--SHADOW-CARD-PRIMARY) motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out">
+    <div className="relative max-w-50 rounded-sm font-(family-name:--FF) font-light shadow-(--SHADOW-CARD-PRIMARY) motion-safe:transition-shadow motion-safe:duration-150 motion-safe:ease-in-out">
       <button
         type="button"
         aria-haspopup="listbox"
         aria-expanded="false"
-        className="flex w-full cursor-pointer items-center justify-between rounded-sm bg-(--COLOR-BG-CARD-PRIMARY) py-3.75 pr-4 pl-6 select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) focus-visible:outline focus-visible:outline-(--COLOR-OUTLINE-PRIMARY)"
+        className="flex w-full cursor-pointer items-center justify-between rounded-sm bg-(--COLOR-BG-CARD-PRIMARY) py-3.75 pr-4 pl-6 select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) focus-visible:outline focus-visible:outline-(--COLOR-OUTLINE-PRIMARY) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out"
       >
         <span className="text-[0.75rem]">Filter by Region</span>
 
