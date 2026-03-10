@@ -1,6 +1,6 @@
 const Search = () => {
   return (
-    <div className="relative rounded-sm bg-(--COLOR-BG-CARD-PRIMARY) py-3 font-(family-name:--FF) shadow-(--SHADOW-CARD-PRIMARY) focus-within:outline focus-within:outline-(--COLOR-OUTLINE-PRIMARY) motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out">
+    <div className="relative max-w-120 rounded-sm bg-(--COLOR-BG-CARD-PRIMARY) py-3 font-(family-name:--FF) shadow-(--SHADOW-CARD-PRIMARY) focus-within:outline focus-within:outline-(--COLOR-OUTLINE-PRIMARY) motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out md:flex-1 md:py-4">
       <label htmlFor="search-input" className="sr-only">
         Search for a country
       </label>
@@ -18,7 +18,7 @@ const Search = () => {
       </svg>
 
       <input
-        className="text(--COLOR-TEXT-PRIMARY) w-full pr-6 pl-18.5 text-[0.765rem] font-semibold placeholder:text-[0.765rem] placeholder:font-light focus-visible:outline-none"
+        className="text(--COLOR-TEXT-PRIMARY) w-full pr-6 pl-18.5 text-[0.765rem] font-semibold placeholder:text-[clamp(0.765rem,0.435rem+0.6875vw,0.875rem)] placeholder:font-light focus-visible:outline-none"
         id="search-input"
         type="search"
         placeholder="Search for a country..."
