@@ -1,18 +1,18 @@
 import type { CountryDetails, FormattedCountryDetails } from '../types/country';
 
 export function getFormattedCountryDetails(
-  data: CountryDetails[],
+  data: CountryDetails,
 ): FormattedCountryDetails {
-  const country = data[0];
+  const nativeNames = Object.values(data.name.nativeName);
 
   return {
-    name: country.name.common,
+    name: data.name.common,
     nativeName:
-      Object.values(country.name.nativeName)[0]?.common ?? country.name.common,
-    subregion: country.subregion,
-    tld: country.tld,
-    currencies: Object.values(country.currencies).map((c) => c.name),
-    languages: Object.values(country.languages),
-    borders: country.borders ?? [],
+      nativeNames.length === 0 ? data.name.common : nativeNames[0].common,
+    subregion: data.subregion,
+    tld: data.tld,
+    currencies: Object.values(data.currencies).map((c) => c.name),
+    languages: Object.values(data.languages),
+    borders: data.borders,
   };
 }
