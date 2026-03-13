@@ -44,3 +44,13 @@ export type CountryDetails = {
   languages: Record<string, string>;
   borders?: string[];
 };
+
+export type FormattedCountryDetails = {
+  name: string;
+  nativeName: string;
+  subregion: string;
+  tld: string[];
+  currencies: string[];
+  languages: string[];
+  borders: string[];
+};
