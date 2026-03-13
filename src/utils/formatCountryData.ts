@@ -17,6 +17,7 @@ export function getFormattedCountryListData(
       population: country.population,
       region: country.region,
       capital: country.capital?.[0] ?? 'N/A',
+      countryCode: country.cca3,
     };
   });
   return formattedData;

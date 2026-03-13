@@ -3,7 +3,7 @@ import { getFormattedCountryListData } from '../utils/formatCountryData';
 
 export const fetchCountryListData = async () => {
   const response = await fetch(
-    'https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags',
+    'https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,cca3',
   );
 
   if (!response.ok) throw new Error('Failed to fetch from countries API.');

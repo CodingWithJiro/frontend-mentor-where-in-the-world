@@ -18,4 +18,5 @@ export type FormattedCountryListData = {
   population: number;
   region: string;
   capital: string;
+  countryCode: string;
 };
