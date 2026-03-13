@@ -38,11 +38,10 @@ export type CountryDetails = {
     string,
     {
       name: string;
-      symbol?: string;
     }
   >;
   languages: Record<string, string>;
-  borders?: string[];
+  borders: string[];
 };
 
 export type FormattedCountryDetails = {
