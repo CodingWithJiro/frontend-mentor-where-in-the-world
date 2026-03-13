@@ -9,6 +9,7 @@ export type CountryListData = {
   population: number;
   region: string;
   capital?: string[];
+  cca3: string;
 };
 
 export type FormattedCountryListData = {
