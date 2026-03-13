@@ -21,3 +21,26 @@ export type FormattedCountryListData = {
   capital: string;
   countryCode: string;
 };
+
+export type CountryDetails = {
+  name: {
+    common: string;
+    nativeName: Record<
+      string,
+      {
+        common: string;
+      }
+    >;
+  };
+  subregion: string;
+  tld: string[];
+  currencies: Record<
+    string,
+    {
+      name: string;
+      symbol?: string;
+    }
+  >;
+  languages: Record<string, string>;
+  borders?: string[];
+};
