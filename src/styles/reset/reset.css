@@ -33,3 +33,7 @@ ul,
 ol {
   list-style-type: none;
 }
+
+input[type='search']::-webkit-search-cancel-button {
+  display: none;
+}

@@ -4,29 +4,32 @@
   --FS: 1rem;
 
   /* COLOR TOKENS */
+  --BLUE-800: hsl(209, 23%, 27%);
   --BLUE-900: hsl(209, 23%, 22%);
   --BLUE-950: hsl(207, 26%, 17%);
   --GREY-950: hsl(200, 15%, 8%);
   --GREY-400: hsl(0, 0%, 50%);
+  --GREY-100: hsl(0, 0%, 90%);
   --GREY-50: hsl(0, 0%, 99%);
   --WHITE: hsl(0, 100%, 100%);
 
   /* BACKGROUND-COLORS */
   --COLOR-BG-PAGE: var(--GREY-50);
   --COLOR-BG-CARD-PRIMARY: var(--WHITE);
+  --COLOR-BG-CARD-PRIMARY-HOVER: var(--GREY-100);
   --COLOR-BG-THEME-ICON: var(--GREY-950);
 
   /* FONT-COLORS */
   --COLOR-TEXT-PRIMARY: var(--GREY-950);
   --COLOR-TEXT-SECONDARY: var(--BLUE-950);
+  --COLOR-TEXT-TERTIARY: var(--GREY-400);
 
   /* SHADOW-COLORS */
-  --COLOR-SHADOW-PRIMARY: 0deg 0% 74%;
+  --COLOR-SHADOW-PRIMARY: hsla(0, 0%, 0%, 0.1);
+
+  /* OUTLINE COLORS */
+  --COLOR-OUTLINE-PRIMARY: var(--BLUE-950);
 
   /* SHADOWS */
-  --SHADOW-CARD-PRIMARY:
-    0px 0.7px 0.7px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.35),
-    0px 1.5px 1.4px -1.2px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.29),
-    0px 4.1px 3.8px -2.5px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.23),
-    0px 10.9px 10.2px -3.7px hsl(var(--COLOR-SHADOW-PRIMARY) / 0.17);
+  --SHADOW-CARD-PRIMARY: 0 1px 6px var(--COLOR-SHADOW-PRIMARY);
 }
