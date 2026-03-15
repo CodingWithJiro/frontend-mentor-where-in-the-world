@@ -6,8 +6,10 @@ import Search from './components/Search';
 import Filter from './components/Filter';
 import Countries from './components/Countries';
 import CountryList from './components/CountryList';
+import useCountries from './hooks/useCountries';
 
 const App = () => {
+  const { countryList } = useCountries();
   return (
     <>
       <SkipLink />
