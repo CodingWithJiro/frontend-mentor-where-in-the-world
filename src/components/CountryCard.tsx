@@ -11,21 +11,22 @@ const CountryCard = ({
   capital,
 }: CountryCardProps) => {
   return (
-    <a href="https://www.youtube.com/" target="_blank">
+    <a href="#">
       <img src={flagImage} alt={flagAlt} />
-      <div>
-        <h2>{name}</h2>
+      <div className="px-6 pt-6.5 pb-11 font-(family-name:--FF) text-sm font-light motion-safe:transition-colors">
+        <h2 className="mb-[0.9rem] text-[1.1rem] font-extrabold">{name}</h2>
 
-        <p>
-          <span>Population:</span> <span>{population.toLocaleString()}</span>
+        <p className="mb-1">
+          <span className="font-semibold">Population:</span>{' '}
+          {population.toLocaleString()}
+        </p>
+
+        <p className="mb-1">
+          <span className="font-semibold">Region:</span> {region}
         </p>
 
         <p>
-          <span>Region:</span> {region}
-        </p>
-
-        <p>
-          <span>Capital:</span> {capital}
+          <span className="font-semibold">Capital:</span> {capital}
         </p>
       </div>
     </a>
