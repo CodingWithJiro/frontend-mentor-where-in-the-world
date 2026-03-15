@@ -20,7 +20,7 @@ const App = () => {
           <Filter />
         </FilterControls>
         <Countries>
-          <CountryList />
+          <CountryList countryList={countryList} />
         </Countries>
       </Main>
     </>
