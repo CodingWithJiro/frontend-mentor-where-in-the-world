@@ -9,18 +9,18 @@ import CountryList from './components/CountryList';
 import useCountries from './hooks/useCountries';
 
 const App = () => {
-  const { countryList } = useCountries();
+  const { filteredCountries, query, handleSearch } = useCountries();
   return (
     <>
       <SkipLink />
       <Header />
       <Main>
         <FilterControls>
-          <Search />
+          <Search query={query} onSearch={handleSearch} />
           <Filter />
         </FilterControls>
         <Countries>
-          <CountryList countryList={countryList} />
+          <CountryList filteredCountries={filteredCountries} />
         </Countries>
       </Main>
     </>
