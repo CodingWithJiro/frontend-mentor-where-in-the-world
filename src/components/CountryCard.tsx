@@ -12,7 +12,13 @@ const CountryCard = ({
 }: CountryCardProps) => {
   return (
     <a href="#">
-      <img src={flagImage} alt={flagAlt} />
+      <div className="h-40">
+        <img
+          src={flagImage}
+          alt={flagAlt}
+          className="h-full w-full object-cover"
+        />
+      </div>
       <div className="px-6 pt-6.5 pb-11 font-(family-name:--FF) text-sm font-light motion-safe:transition-colors">
         <h2 className="mb-[0.9rem] text-[1.1rem] font-extrabold">{name}</h2>
 
