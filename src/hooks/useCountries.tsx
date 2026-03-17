@@ -8,6 +8,7 @@ const useCountries = () => {
     [],
   );
   const [query, setQuery] = useState<string>('');
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -28,6 +29,9 @@ const useCountries = () => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
+  const handleFilterOpen = () => {
+    setIsFilterOpen((prevIsFilterOpen: boolean) => !prevIsFilterOpen);
+  };
 
   const formattedQuery = getFormattedQuery(query);
   const filteredCountries = useMemo(() => {
@@ -39,7 +43,14 @@ const useCountries = () => {
     });
   }, [formattedQuery, countryList]);
 
-  return { filteredCountries, error, query, handleSearch };
+  return {
+    filteredCountries,
+    error,
+    query,
+    handleSearch,
+    isFilterOpen,
+    handleFilterOpen,
+  };
 };
 
 export default useCountries;
