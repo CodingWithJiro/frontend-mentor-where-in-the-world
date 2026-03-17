@@ -8,3 +8,4 @@
 @import url(./base/motion.css) layer(base);
 
 @import url(./utilities/helpers.css) layer(utilities);
+@import url(./utilities/animation.css) layer(utilities);
