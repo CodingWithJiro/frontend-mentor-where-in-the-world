@@ -9,7 +9,13 @@ import CountryList from './components/CountryList';
 import useCountries from './hooks/useCountries';
 
 const App = () => {
-  const { filteredCountries, query, handleSearch } = useCountries();
+  const {
+    filteredCountries,
+    query,
+    handleSearch,
+    isFilterOpen,
+    handleFilterOpen,
+  } = useCountries();
   return (
     <>
       <SkipLink />
@@ -17,7 +23,7 @@ const App = () => {
       <Main>
         <FilterControls>
           <Search query={query} onSearch={handleSearch} />
-          <Filter />
+          <Filter isFilterOpen={isFilterOpen} onFilterOpen={handleFilterOpen} />
         </FilterControls>
         <Countries>
           <CountryList filteredCountries={filteredCountries} />
