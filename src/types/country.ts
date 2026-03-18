@@ -53,3 +53,5 @@ export type FormattedCountryDetails = {
   languages: string[];
   borders: string[];
 };
+
+export type Status = 'loading' | 'success' | 'fail';
