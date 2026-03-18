@@ -15,6 +15,8 @@ const App = () => {
     handleSearch,
     isFilterOpen,
     handleFilterOpen,
+    region,
+    handleSelectRegion,
   } = useCountries();
   return (
     <>
@@ -23,7 +25,12 @@ const App = () => {
       <Main>
         <FilterControls>
           <Search query={query} onSearch={handleSearch} />
-          <Filter isFilterOpen={isFilterOpen} onFilterOpen={handleFilterOpen} />
+          <Filter
+            isFilterOpen={isFilterOpen}
+            onFilterOpen={handleFilterOpen}
+            region={region}
+            onSelectRegion={handleSelectRegion}
+          />
         </FilterControls>
         <Countries>
           <CountryList filteredCountries={filteredCountries} />
