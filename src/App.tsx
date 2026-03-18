@@ -18,6 +18,7 @@ const App = () => {
     handleFilterOpen,
     region,
     handleSelectRegion,
+    status,
   } = useCountries();
   return (
     <>
@@ -33,7 +34,7 @@ const App = () => {
             onSelectRegion={handleSelectRegion}
           />
         </FilterControls>
-        <Countries isEmpty={isEmpty}>
+        <Countries status={status} isEmpty={isEmpty}>
           <CountryList filteredCountries={filteredCountries} />
         </Countries>
       </Main>
