@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { fetchCountryListData } from '../services/countriesApi';
 import { getFormattedQuery } from '../utils/formatQuery';
 import type { FormattedCountryListData } from '../types/country';
+import type { Status } from '../types/country';
 
 const useCountries = () => {
   const [countryList, setCountryList] = useState<FormattedCountryListData[]>(
@@ -11,16 +12,20 @@ const useCountries = () => {
   const [region, setRegion] = useState<string>('');
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<Status>('loading');
 
   useEffect(() => {
     const loadCountryList = async () => {
+      setStatus('loading');
       try {
         const countryListData = await fetchCountryListData();
         setCountryList(countryListData);
+        setStatus('success');
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
         }
+        setStatus('fail');
       }
     };
 
@@ -67,6 +72,7 @@ const useCountries = () => {
     handleFilterOpen,
     region,
     handleSelectRegion,
+    status,
   };
 };
 
