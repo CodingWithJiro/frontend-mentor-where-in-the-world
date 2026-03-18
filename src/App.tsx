@@ -11,6 +11,7 @@ import useCountries from './hooks/useCountries';
 const App = () => {
   const {
     filteredCountries,
+    isEmpty,
     query,
     handleSearch,
     isFilterOpen,
@@ -32,7 +33,7 @@ const App = () => {
             onSelectRegion={handleSelectRegion}
           />
         </FilterControls>
-        <Countries>
+        <Countries isEmpty={isEmpty}>
           <CountryList filteredCountries={filteredCountries} />
         </Countries>
       </Main>
