@@ -1,9 +1,18 @@
 type FilterProps = {
   isFilterOpen: boolean;
   onFilterOpen: () => void;
+  region: string;
+  onSelectRegion: (region: string) => void;
 };
 
-const Filter = ({ isFilterOpen, onFilterOpen }: FilterProps) => {
+const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+
+const Filter = ({
+  isFilterOpen,
+  onFilterOpen,
+  region,
+  onSelectRegion,
+}: FilterProps) => {
   return (
     <div className="relative max-w-50 rounded-sm font-(family-name:--FF) font-light shadow-(--SHADOW-CARD-PRIMARY) motion-safe:transition-shadow motion-safe:duration-150 motion-safe:ease-in-out md:flex-1">
       <button
@@ -14,7 +23,7 @@ const Filter = ({ isFilterOpen, onFilterOpen }: FilterProps) => {
         onClick={onFilterOpen}
       >
         <span className="text-[clamp(0.75rem,0.375rem+0.78125vw,0.875rem)]">
-          Filter by Region
+          {region ? region : 'Filter by Region'}
         </span>
 
         <svg
@@ -33,25 +42,15 @@ const Filter = ({ isFilterOpen, onFilterOpen }: FilterProps) => {
           role="listbox"
           className="fade-in absolute top-[calc(4px+100%)] left-0 z-10 w-full rounded-sm bg-(--COLOR-BG-CARD-PRIMARY) pt-3.25 pb-3 text-[clamp(0.75rem,0.375rem+0.78125vw,0.875rem)] shadow-(--SHADOW-CARD-PRIMARY) select-none motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out [&_button]:w-full [&_button]:cursor-pointer [&_button]:rounded-sm [&_button]:px-6 [&_button]:py-0.75 [&_button]:text-left [&_button]:hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) [&_button]:focus-visible:outline-1 [&_button]:focus-visible:outline-(--COLOR-OUTLINE-PRIMARY) md:[&_button]:py-[0.2125rem]"
         >
-          <li role="option">
-            <button type="button">Africa</button>
-          </li>
-
-          <li role="option">
-            <button type="button">America</button>
-          </li>
-
-          <li role="option">
-            <button type="button">Asia</button>
-          </li>
-
-          <li role="option">
-            <button type="button">Europe</button>
-          </li>
-
-          <li role="option">
-            <button type="button">Oceania</button>
-          </li>
+          {regions.map((r) => {
+            return (
+              <li role="option">
+                <button type="button" onClick={() => onSelectRegion(r)}>
+                  {r}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
