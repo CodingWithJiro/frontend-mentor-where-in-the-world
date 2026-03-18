@@ -55,9 +55,11 @@ const useCountries = () => {
         return hasMatchingQuery;
       });
   }, [formattedQuery, countryList, region]);
+  const isEmpty = filteredCountries.length === 0;
 
   return {
     filteredCountries,
+    isEmpty,
     error,
     query,
     handleSearch,
