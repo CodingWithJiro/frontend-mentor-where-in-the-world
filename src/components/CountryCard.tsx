@@ -1,23 +1,41 @@
-const CountryCard = () => {
+import type { FormattedCountryListData } from '../types/country';
+
+type CountryCardProps = FormattedCountryListData;
+
+const CountryCard = ({
+  flagImage,
+  flagAlt,
+  name,
+  population,
+  region,
+  capital,
+}: CountryCardProps) => {
   return (
-    <article>
-      <img src="#TO_ADD" alt="#TO_ADD" />
-      <div>
-        <h2>United States of America</h2>
+    <a href="#">
+      <div className="h-40">
+        <img
+          src={flagImage}
+          alt={flagAlt}
+          className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-in-out"
+        />
+      </div>
+      <div className="px-6 pt-6.5 pb-11 font-(family-name:--FF) text-sm font-light motion-safe:transition-colors">
+        <h2 className="mb-[0.9rem] text-[1.1rem] font-extrabold">{name}</h2>
 
-        <p>
-          <span>Population:</span> 123,456,789
+        <p className="mb-1">
+          <span className="font-semibold">Population:</span>{' '}
+          {population.toLocaleString()}
+        </p>
+
+        <p className="mb-1">
+          <span className="font-semibold">Region:</span> {region}
         </p>
 
         <p>
-          <span>Region:</span> Americas
-        </p>
-
-        <p>
-          <span>Capital:</span> Washington, D.C.
+          <span className="font-semibold">Capital:</span> {capital}
         </p>
       </div>
-    </article>
+    </a>
   );
 };
 

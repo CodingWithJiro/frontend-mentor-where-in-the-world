@@ -1,9 +1,52 @@
-import type { PropsWithChildren } from 'react';
+import type { ReactNode } from 'react';
+import type { Status } from '../types/country';
 
-type CountriesProps = PropsWithChildren;
+type CountriesProps = {
+  children: ReactNode;
+  isEmpty: boolean;
+  status: Status;
+};
 
-const Countries = ({ children }: CountriesProps) => {
-  return <ul>{children}</ul>;
+const Countries = ({ children, isEmpty, status }: CountriesProps) => {
+  {
+    if (status === 'loading') {
+      return (
+        <p className="text-center font-(family-name:--FF) text-sm font-light text-(--COLOR-TEXT-PRIMARY)">
+          Loading countries...
+        </p>
+      );
+    }
+
+    if (status === 'fail') {
+      return (
+        <p className="text-center font-(family-name:--FF) text-sm font-light text-(--COLOR-TEXT-PRIMARY)">
+          Failed to fetch country data.
+        </p>
+      );
+    }
+
+    return status === 'success' && isEmpty ? (
+      <div className="fade-in flex items-center justify-center gap-1 text-(--COLOR-TEXT-PRIMARY) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="22px"
+          viewBox="0 -960 960 960"
+          width="22px"
+          fill="currentColor"
+        >
+          <path d="M138.5-138.5Q80-197 80-280t58.5-141.5Q197-480 280-480t141.5 58.5Q480-363 480-280t-58.5 141.5Q363-80 280-80t-141.5-58.5ZM824-120 568-376q-12-13-25.5-26.5T516-428q38-24 61-64t23-88q0-75-52.5-127.5T420-760q-75 0-127.5 52.5T240-580q0 6 .5 11.5T242-557q-18 2-39.5 8T164-535q-2-11-3-22t-1-23q0-109 75.5-184.5T420-840q109 0 184.5 75.5T680-580q0 43-13.5 81.5T629-428l251 252-56 56Zm-615-61 71-71 70 71 29-28-71-71 71-71-28-28-71 71-71-71-28 28 71 71-71 71 28 28Z" />
+        </svg>
+
+        <p className="font-(family-name:--FF) font-light">
+          No matching countries.
+        </p>
+      </div>
+    ) : (
+      <ul className="mx-auto grid max-w-160 grid-cols-1 justify-items-center gap-y-10 sm:grid-cols-2 sm:gap-y-18.5 lg:max-w-250 lg:grid-cols-3 xl:max-w-338 xl:grid-cols-4">
+        {children}
+      </ul>
+    );
+  }
 };
 
 export default Countries;

@@ -6,19 +6,36 @@ import Search from './components/Search';
 import Filter from './components/Filter';
 import Countries from './components/Countries';
 import CountryList from './components/CountryList';
+import useCountries from './hooks/useCountries';
 
 const App = () => {
+  const {
+    filteredCountries,
+    isEmpty,
+    query,
+    handleSearch,
+    isFilterOpen,
+    handleFilterOpen,
+    region,
+    handleSelectRegion,
+    status,
+  } = useCountries();
   return (
     <>
       <SkipLink />
       <Header />
       <Main>
         <FilterControls>
-          <Search />
-          <Filter />
+          <Search query={query} onSearch={handleSearch} />
+          <Filter
+            isFilterOpen={isFilterOpen}
+            onFilterOpen={handleFilterOpen}
+            region={region}
+            onSelectRegion={handleSelectRegion}
+          />
         </FilterControls>
-        <Countries>
-          <CountryList />
+        <Countries status={status} isEmpty={isEmpty}>
+          <CountryList filteredCountries={filteredCountries} />
         </Countries>
       </Main>
     </>
