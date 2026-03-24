@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { FormattedCountryListData } from '../types/country';
 
 type CountryCardProps = FormattedCountryListData;
@@ -9,9 +10,10 @@ const CountryCard = ({
   population,
   region,
   capital,
+  countryCode,
 }: CountryCardProps) => {
   return (
-    <a href="#">
+    <Link to={`/country/${countryCode}`}>
       <div className="h-40">
         <img
           src={flagImage}
@@ -36,7 +38,7 @@ const CountryCard = ({
           <span className="font-semibold">Capital:</span> {capital}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
