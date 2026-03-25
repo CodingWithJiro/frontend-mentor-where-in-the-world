@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchCountryDetails } from '../services/countriesApi';
 import type { FormattedCountryDetails, Status } from '../types/country';
@@ -46,7 +46,9 @@ const Detail = () => {
         {country.borderNames && (
           <ul>
             {country.borderNames.map((border) => (
-              <li key={border.cca3}>{border.name}</li>
+              <Link to={`/country/${border.cca3}`}>
+                <li key={border.cca3}>{border.name}</li>
+              </Link>
             ))}
           </ul>
         )}

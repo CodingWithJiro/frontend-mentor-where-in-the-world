@@ -36,7 +36,7 @@ export const fetchCountryDetails = async (countryCode: string) => {
   }
 
   const responseBorders = await fetch(
-    `https://restcountries.com/v3.1/alpha?codes=${formattedDetails.borders.join(',')}&fields=name`,
+    `https://restcountries.com/v3.1/alpha?codes=${formattedDetails.borders.join(',')}&fields=name,cca3`,
   );
 
   if (!responseBorders.ok) throw new Error('Failed to fetch border names.');
