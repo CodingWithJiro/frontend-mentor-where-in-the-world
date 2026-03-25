@@ -1,9 +1,9 @@
 type SearchProps = {
-  query: string;
+  searchInput: string;
   onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Search = ({ query, onSearch }: SearchProps) => {
+const Search = ({ searchInput, onSearch }: SearchProps) => {
   return (
     <div className="relative max-w-120 rounded-sm bg-(--COLOR-BG-CARD-PRIMARY) py-3 font-(family-name:--FF) shadow-(--SHADOW-CARD-PRIMARY) focus-within:outline focus-within:outline-(--COLOR-OUTLINE-PRIMARY) motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out md:flex-1 md:py-4">
       <label htmlFor="search-input" className="sr-only">
@@ -27,7 +27,7 @@ const Search = ({ query, onSearch }: SearchProps) => {
         id="search-input"
         type="search"
         placeholder="Search for a country..."
-        value={query}
+        value={searchInput}
         onChange={onSearch}
       />
     </div>

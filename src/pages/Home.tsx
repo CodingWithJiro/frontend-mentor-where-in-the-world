@@ -9,7 +9,7 @@ const Home = () => {
   const {
     filteredCountries,
     isEmpty,
-    query,
+    searchInput,
     handleSearch,
     isFilterOpen,
     handleFilterOpen,
@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <>
       <FilterControls>
-        <Search query={query} onSearch={handleSearch} />
+        <Search searchInput={searchInput} onSearch={handleSearch} />
         <Filter
           isFilterOpen={isFilterOpen}
           onFilterOpen={handleFilterOpen}

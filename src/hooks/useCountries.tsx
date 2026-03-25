@@ -15,6 +15,7 @@ const useCountries = () => {
   const [status, setStatus] = useState<Status>('loading');
   const query = searchParams.get('search') || '';
   const region = searchParams.get('region') || '';
+  const [searchInput, setSearchInput] = useState<string>(query);
 
   useEffect(() => {
     const loadCountryList = async () => {
@@ -33,21 +34,30 @@ const useCountries = () => {
 
     loadCountryList();
   }, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSearchParams((prev) => {
+        const newParams = new URLSearchParams(prev);
+
+        if (searchInput) {
+          newParams.set('search', searchInput);
+        } else {
+          newParams.delete('search');
+        }
+
+        return newParams;
+      });
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [searchInput, setSearchParams]);
+  useEffect(() => {
+    setSearchInput(query);
+  }, [query]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    setSearchParams((prev) => {
-      const newParams = new URLSearchParams(prev);
-
-      if (value) {
-        newParams.set('search', value);
-      } else {
-        newParams.delete('search');
-      }
-
-      return newParams;
-    });
+    setSearchInput(value);
   };
   const handleFilterOpen = () => {
     setIsFilterOpen((prevIsFilterOpen: boolean) => !prevIsFilterOpen);
@@ -89,7 +99,7 @@ const useCountries = () => {
     filteredCountries,
     isEmpty,
     error,
-    query,
+    searchInput,
     handleSearch,
     isFilterOpen,
     handleFilterOpen,
