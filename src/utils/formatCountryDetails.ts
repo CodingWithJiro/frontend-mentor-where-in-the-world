@@ -14,5 +14,11 @@ export function getFormattedCountryDetails(
     currencies: Object.values(data.currencies).map((c) => c.name),
     languages: Object.values(data.languages),
     borders: data.borders,
+    flagImage: data.flags.svg,
+    flagAlt: data.flags.alt ?? '',
+    population: data.population,
+    region: data.region,
+    capital: data.capital.join(', '),
+    borderNames: null,
   };
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { fetchCountryListData } from '../services/countriesApi';
 import { getFormattedQuery } from '../utils/formatQuery';
 import type { FormattedCountryListData } from '../types/country';
@@ -8,11 +9,13 @@ const useCountries = () => {
   const [countryList, setCountryList] = useState<FormattedCountryListData[]>(
     [],
   );
-  const [query, setQuery] = useState<string>('');
-  const [region, setRegion] = useState<string>('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>('loading');
+  const query = searchParams.get('search') || '';
+  const region = searchParams.get('region') || '';
+  const [searchInput, setSearchInput] = useState<string>(query);
 
   useEffect(() => {
     const loadCountryList = async () => {
@@ -31,17 +34,47 @@ const useCountries = () => {
 
     loadCountryList();
   }, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSearchParams((prev) => {
+        const newParams = new URLSearchParams(prev);
+
+        if (searchInput) {
+          newParams.set('search', searchInput);
+        } else {
+          newParams.delete('search');
+        }
+
+        return newParams;
+      });
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [searchInput, setSearchParams]);
+  useEffect(() => {
+    setSearchInput(query);
+  }, [query]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    const value = e.target.value;
+    setSearchInput(value);
   };
   const handleFilterOpen = () => {
     setIsFilterOpen((prevIsFilterOpen: boolean) => !prevIsFilterOpen);
   };
   const handleSelectRegion = (selectedRegion: string) => {
-    setRegion((prevRegion) =>
-      prevRegion === selectedRegion ? '' : selectedRegion,
-    );
+    setSearchParams((prev) => {
+      const newParams = new URLSearchParams(prev);
+      const currentRegion = newParams.get('region');
+
+      if (currentRegion === selectedRegion) {
+        newParams.delete('region');
+      } else {
+        newParams.set('region', selectedRegion);
+      }
+
+      return newParams;
+    });
     setIsFilterOpen((prevIsFilterOpen: boolean) => !prevIsFilterOpen);
   };
 
@@ -66,7 +99,7 @@ const useCountries = () => {
     filteredCountries,
     isEmpty,
     error,
-    query,
+    searchInput,
     handleSearch,
     isFilterOpen,
     handleFilterOpen,
