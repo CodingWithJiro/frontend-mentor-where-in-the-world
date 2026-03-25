@@ -42,6 +42,13 @@ export type CountryDetails = {
   >;
   languages: Record<string, string>;
   borders: string[];
+  flags: {
+    svg: string;
+    alt?: string;
+  };
+  population: number;
+  region: string;
+  capital: string[];
 };
 
 export type FormattedCountryDetails = {
@@ -52,6 +59,24 @@ export type FormattedCountryDetails = {
   currencies: string[];
   languages: string[];
   borders: string[];
+  flagImage: string;
+  flagAlt: string;
+  population: number;
+  region: string;
+  capital: string;
+  borderNames: FormattedCountryBorders[] | null;
 };
 
 export type Status = 'loading' | 'success' | 'fail';
+
+export type CountryBorders = {
+  name: {
+    common: string;
+  };
+  cca3: string;
+};
+
+export type FormattedCountryBorders = {
+  name: string;
+  cca3: string;
+};
