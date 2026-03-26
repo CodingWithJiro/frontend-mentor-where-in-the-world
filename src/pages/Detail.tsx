@@ -40,67 +40,99 @@ const Detail = () => {
 
   if (country) {
     return (
-      <section>
-        <button type="button" onClick={handleBack}>
-          Back
+      <section className="mx-auto w-full max-w-105 px-3 pt-4 font-(family-name:--FF)">
+        <button
+          type="button"
+          onClick={handleBack}
+          className="mb-16 flex cursor-pointer items-center justify-center gap-1.5 rounded-xs bg-(--COLOR-BG-CARD-PRIMARY) px-5.75 py-1.25 font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY-DARK) select-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="22px"
+            viewBox="0 -960 960 960"
+            width="22px"
+            fill="currentColor"
+          >
+            <path d="M360-240 120-480l240-240 56 56-144 144h568v80H272l144 144-56 56Z" />
+          </svg>
+          <span className="text-sm">Back</span>
         </button>
 
-        <div>
+        <div className="flex flex-col gap-10.75">
           <img src={country.flagImage} alt={country.flagAlt} />
 
           <div>
-            <h2>Name: {country.name}</h2>
+            <h2 className="mb-5.5 text-[1.35rem] font-extrabold">
+              {country.name}
+            </h2>
 
-            <div>
-              <div>
+            <div className="mb-10 flex flex-col gap-10.75 text-sm font-light">
+              <div className="flex flex-col gap-3">
                 <p>
-                  <span>Native name:</span> {country.nativeName}
+                  <span className="font-semibold">Native Name:</span>{' '}
+                  {country.nativeName}
                 </p>
 
                 <p>
-                  <span>Population:</span> {country.population.toLocaleString()}
+                  <span className="font-semibold">Population:</span>{' '}
+                  {country.population.toLocaleString()}
                 </p>
 
                 <p>
-                  <span>Region:</span> {country.region}
+                  <span className="font-semibold">Region:</span>{' '}
+                  {country.region}
                 </p>
 
                 <p>
-                  <span>Sub Region:</span> {country.subregion}
+                  <span className="font-semibold">Sub Region:</span>{' '}
+                  {country.subregion}
                 </p>
 
                 <p>
-                  <span>Capital:</span> {country.capital}
+                  <span className="font-semibold">Capital:</span>{' '}
+                  {country.capital}
                 </p>
               </div>
 
-              <div>
+              <div className="flex flex-col gap-3">
                 <p>
-                  <span>Top Level Domain:</span> {country.tld.join(', ')}
+                  <span className="font-semibold">Top Level Domain:</span>{' '}
+                  {country.tld.join(', ')}
                 </p>
 
                 <p>
-                  <span>Currencies:</span> {country.currencies.join(', ')}
+                  <span className="font-semibold">Currencies:</span>{' '}
+                  {country.currencies
+                    .map((c) => c[0].toUpperCase() + c.slice(1))
+                    .join(', ')}
                 </p>
 
                 <p>
-                  <span>Languages:</span> {country.languages.join(', ')}
+                  <span className="font-semibold">Languages:</span>{' '}
+                  {country.languages.sort().join(', ')}
                 </p>
               </div>
             </div>
 
-            <div>
-              <p>Border Countries:</p>
+            <div className="flex flex-col gap-4">
+              <p className="font-semibold">Border Countries:</p>
               {country.borderNames && (
-                <ul>
+                <ul className="flex flex-wrap gap-2.5">
                   {country.borderNames.map((border) => (
                     <Link to={`/country/${border.cca3}`}>
-                      <li key={border.cca3}>{border.name}</li>
+                      <li
+                        key={border.cca3}
+                        className="w-24 py-1.25 text-center text-[0.75rem] font-light shadow-(--SHADOW-CARD-PRIMARY) select-none"
+                      >
+                        {border.name}
+                      </li>
                     </Link>
                   ))}
                 </ul>
               )}
-              {!country.borderNames && <p>No border countries</p>}
+              {!country.borderNames && (
+                <p className="text-sm font-light">No border countries</p>
+              )}
             </div>
           </div>
         </div>
