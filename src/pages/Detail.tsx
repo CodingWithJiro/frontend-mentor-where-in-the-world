@@ -44,27 +44,66 @@ const Detail = () => {
         <button type="button" onClick={handleBack}>
           Back
         </button>
-        <img src={country.flagImage} alt={country.flagAlt} />
-        <h2>Name: {country.name}</h2>
-        <p>Native name: {country.nativeName}</p>
-        <p>Population: {country.population.toLocaleString()}</p>
-        <p>Region: {country.region}</p>
-        <p>Sub Region: {country.subregion}</p>
-        <p>Capital: {country.capital}</p>
-        <p>Top Level Domain: {country.tld.join(', ')}</p>
-        <p>Currencies: {country.currencies.join(', ')}</p>
-        <p>Languages: {country.languages.join(', ')}</p>
-        <p>Border Countries:</p>
-        {country.borderNames && (
-          <ul>
-            {country.borderNames.map((border) => (
-              <Link to={`/country/${border.cca3}`}>
-                <li key={border.cca3}>{border.name}</li>
-              </Link>
-            ))}
-          </ul>
-        )}
-        {!country.borderNames && <p>No border countries</p>}
+
+        <div>
+          <img src={country.flagImage} alt={country.flagAlt} />
+
+          <div>
+            <h2>Name: {country.name}</h2>
+
+            <div>
+              <div>
+                <p>
+                  <span>Native name:</span> {country.nativeName}
+                </p>
+
+                <p>
+                  <span>Population:</span> {country.population.toLocaleString()}
+                </p>
+
+                <p>
+                  <span>Region:</span> {country.region}
+                </p>
+
+                <p>
+                  <span>Sub Region:</span> {country.subregion}
+                </p>
+
+                <p>
+                  <span>Capital:</span> {country.capital}
+                </p>
+              </div>
+
+              <div>
+                <p>
+                  <span>Top Level Domain:</span> {country.tld.join(', ')}
+                </p>
+
+                <p>
+                  <span>Currencies:</span> {country.currencies.join(', ')}
+                </p>
+
+                <p>
+                  <span>Languages:</span> {country.languages.join(', ')}
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <p>Border Countries:</p>
+              {country.borderNames && (
+                <ul>
+                  {country.borderNames.map((border) => (
+                    <Link to={`/country/${border.cca3}`}>
+                      <li key={border.cca3}>{border.name}</li>
+                    </Link>
+                  ))}
+                </ul>
+              )}
+              {!country.borderNames && <p>No border countries</p>}
+            </div>
+          </div>
+        </div>
       </section>
     );
   }
