@@ -59,7 +59,11 @@ const Detail = () => {
         </button>
 
         <div className="flex flex-col gap-10.75">
-          <img src={country.flagImage} alt={country.flagAlt} />
+          <img
+            src={country.flagImage}
+            alt={country.flagAlt}
+            className="shadow-(--SHADOW-CARD-PRIMARY)"
+          />
 
           <div>
             <h2 className="mb-5.5 text-[1.35rem] font-extrabold">
