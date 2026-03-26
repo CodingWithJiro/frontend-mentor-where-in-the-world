@@ -12,6 +12,7 @@
 
   /* SHADOW-COLORS */
   --COLOR-SHADOW-PRIMARY: hsla(209deg, 40%, 9%, 0.1);
+  --COLOR-SHADOW-PRIMARY-DARK: hsla(209deg, 40%, 9%, 0.35);
 
   /* OUTLINE COLORS */
   --COLOR-OUTLINE-PRIMARY: var(--WHITE);
