@@ -103,11 +103,13 @@ const Detail = () => {
         </button>
 
         <div className="flex flex-col gap-10.75 motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out">
-          <img
-            src={country.flagImage}
-            alt={country.flagAlt}
-            className="shadow-(--SHADOW-CARD-PRIMARY)"
-          />
+          <div className="aspect-4/3 w-full overflow-hidden">
+            <img
+              src={country.flagImage}
+              alt={country.flagAlt}
+              className="h-full w-full object-contain shadow-(--SHADOW-CARD-PRIMARY)"
+            />
+          </div>
 
           <div>
             <h2 className="mb-5.5 text-[1.35rem] font-extrabold">
