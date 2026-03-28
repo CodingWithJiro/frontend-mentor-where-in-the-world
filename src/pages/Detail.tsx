@@ -126,7 +126,7 @@ const Detail = () => {
                     <Link to={`/country/${border.cca3}`}>
                       <li
                         key={border.cca3}
-                        className="w-24 py-1.25 text-center text-[0.75rem] font-light shadow-(--SHADOW-CARD-PRIMARY) select-none"
+                        className="w-24 bg-(--COLOR-BG-CARD-PRIMARY) py-1.25 text-center text-[0.75rem] font-light shadow-(--SHADOW-CARD-PRIMARY) select-none"
                       >
                         {border.name}
                       </li>
