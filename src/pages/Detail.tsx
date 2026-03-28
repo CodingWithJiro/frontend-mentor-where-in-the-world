@@ -44,7 +44,7 @@ const Detail = () => {
         <button
           type="button"
           onClick={handleBack}
-          className="mb-16 flex cursor-pointer items-center justify-center gap-1.5 rounded-xs bg-(--COLOR-BG-CARD-PRIMARY) px-5.75 py-1.25 font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY-DARK) select-none"
+          className="mb-16 flex cursor-pointer items-center justify-center gap-1.5 rounded-xs bg-(--COLOR-BG-CARD-PRIMARY) px-5.75 py-1.25 font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY-DARK) select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) focus-visible:outline-1 focus-visible:outline-(--COLOR-OUTLINE-PRIMARY)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -123,10 +123,13 @@ const Detail = () => {
               {country.borderNames && (
                 <ul className="flex flex-wrap gap-2.5">
                   {country.borderNames.map((border) => (
-                    <Link to={`/country/${border.cca3}`}>
+                    <Link
+                      to={`/country/${border.cca3}`}
+                      className="focus-visible:outline-1 focus-visible:outline-(--COLOR-OUTLINE-PRIMARY)"
+                    >
                       <li
                         key={border.cca3}
-                        className="w-24 bg-(--COLOR-BG-CARD-PRIMARY) py-1.25 text-center text-[0.75rem] font-light shadow-(--SHADOW-CARD-PRIMARY) select-none"
+                        className="w-24 bg-(--COLOR-BG-CARD-PRIMARY) py-1.25 text-center text-[0.75rem] font-light shadow-(--SHADOW-CARD-PRIMARY) select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER)"
                       >
                         {border.name}
                       </li>
