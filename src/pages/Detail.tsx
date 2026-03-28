@@ -42,11 +42,11 @@ const Detail = () => {
 
   if (country) {
     return (
-      <section className="mx-auto w-full max-w-105 px-3 pt-4 font-(family-name:--FF)">
+      <section className="mx-auto w-full max-w-105 px-3 pt-4 font-(family-name:--FF) md:max-w-7xl md:px-0 md:pt-8">
         <button
           type="button"
           onClick={handleBack}
-          className="mb-16 flex cursor-pointer items-center justify-center gap-1.5 rounded-xs bg-(--COLOR-BG-CARD-PRIMARY) px-5.75 py-1.25 font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY-DARK) select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) focus-visible:outline-1 focus-visible:outline-(--COLOR-OUTLINE-PRIMARY) motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out"
+          className="mb-16 flex cursor-pointer items-center justify-center gap-1.5 rounded-xs bg-(--COLOR-BG-CARD-PRIMARY) px-5.75 py-1.25 text-sm font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY-DARK) select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) focus-visible:outline-1 focus-visible:outline-(--COLOR-OUTLINE-PRIMARY) motion-safe:transition-[color,background-color,box-shadow] motion-safe:duration-150 motion-safe:ease-in-out md:mb-17.5 md:gap-2.5 md:rounded-[5px] md:px-8.5 md:py-2.25 md:text-[1rem] md:font-semibold"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,25 +57,25 @@ const Detail = () => {
           >
             <path d="M360-240 120-480l240-240 56 56-144 144h568v80H272l144 144-56 56Z" />
           </svg>
-          <span className="text-sm">Back</span>
+          <span>Back</span>
         </button>
 
-        <div className="flex flex-col gap-10.75 motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out">
-          <div className="aspect-4/3 w-full overflow-hidden">
+        <div className="flex flex-col gap-10.75 motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out md:flex-row md:items-center md:gap-[clamp(2rem,-4.2857rem+13.0952vw,7.5rem)]">
+          <div className="aspect-4/3 w-full overflow-hidden md:flex md:max-w-[clamp(25rem,13.5714rem+23.8095vw,35rem)] md:items-center md:justify-center">
             <img
               src={country.flagImage}
               alt={country.flagAlt}
-              className="h-full w-full object-contain shadow-(--SHADOW-CARD-PRIMARY)"
+              className="h-full w-full object-contain shadow-(--SHADOW-CARD-PRIMARY) md:h-auto"
             />
           </div>
 
-          <div>
-            <h2 className="mb-5.5 text-[1.35rem] font-extrabold">
+          <div className="flex-1">
+            <h2 className="mb-5.5 text-[clamp(1.35rem,0.6643rem+1.4286vw,1.95rem)] font-extrabold md:mb-6">
               {country.name}
             </h2>
 
-            <div className="mb-10 flex flex-col gap-10.75 text-sm font-light">
-              <div className="flex flex-col gap-3">
+            <div className="mb-10 flex flex-col gap-10.75 text-[clamp(0.875rem,0.7321rem,0.2976vw,1rem)] font-light md:mb-[clamp(2rem,-0.7143rem+5.6548vw,4.375rem)] md:flex-row md:gap-[clamp(0.5rem,-5.5rem+12.5vw,5.75rem)]">
+              <div className="flex flex-col gap-3 md:w-full md:max-w-65 md:gap-2">
                 <p>
                   <span className="font-semibold">Native Name:</span>{' '}
                   {country.nativeName}
@@ -102,7 +102,7 @@ const Detail = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 md:w-full md:max-w-65 md:gap-2">
                 <p>
                   <span className="font-semibold">Top Level Domain:</span>{' '}
                   {country.tld.join(', ')}
@@ -122,8 +122,8 @@ const Detail = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <p className="font-semibold">Border Countries:</p>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center">
+              <p className="w-full max-w-32 font-semibold">Border Countries:</p>
               {country.borderNames && (
                 <ul className="flex flex-wrap gap-2.5">
                   {country.borderNames.map((border) => (
@@ -133,7 +133,7 @@ const Detail = () => {
                     >
                       <li
                         key={border.cca3}
-                        className="w-24 bg-(--COLOR-BG-CARD-PRIMARY) py-1.25 text-center text-[0.75rem] font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY) select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out"
+                        className="w-24 bg-(--COLOR-BG-CARD-PRIMARY) py-1.25 text-center text-[0.75rem] font-light text-(--COLOR-TEXT-PRIMARY) shadow-(--SHADOW-CARD-PRIMARY) select-none hover:bg-(--COLOR-BG-CARD-PRIMARY-HOVER) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out md:text-sm"
                       >
                         {border.name}
                       </li>
