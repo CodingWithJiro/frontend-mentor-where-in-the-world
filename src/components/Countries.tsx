@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Status } from '../types/country';
 import Loading from './Loading';
+import Fail from './Fail';
 
 type CountriesProps = {
   children: ReactNode;
@@ -11,14 +12,7 @@ type CountriesProps = {
 const Countries = ({ children, isEmpty, status }: CountriesProps) => {
   {
     if (status === 'loading') return <Loading page="home" />;
-
-    if (status === 'fail') {
-      return (
-        <p className="text-center font-(family-name:--FF) text-sm font-light text-(--COLOR-TEXT-PRIMARY)">
-          Failed to fetch country data.
-        </p>
-      );
-    }
+    if (status === 'fail') return <Fail page="home" />;
 
     return status === 'success' && isEmpty ? (
       <div className="fade-in flex items-center justify-center gap-1 text-(--COLOR-TEXT-PRIMARY) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out">
