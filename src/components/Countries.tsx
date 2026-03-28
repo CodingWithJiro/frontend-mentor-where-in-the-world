@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Status } from '../types/country';
+import Loading from './Loading';
 
 type CountriesProps = {
   children: ReactNode;
@@ -9,13 +10,7 @@ type CountriesProps = {
 
 const Countries = ({ children, isEmpty, status }: CountriesProps) => {
   {
-    if (status === 'loading') {
-      return (
-        <p className="text-center font-(family-name:--FF) text-sm font-light text-(--COLOR-TEXT-PRIMARY)">
-          Loading countries...
-        </p>
-      );
-    }
+    if (status === 'loading') return <Loading page="home" />;
 
     if (status === 'fail') {
       return (
