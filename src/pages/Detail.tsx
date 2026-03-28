@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchCountryDetails } from '../services/countriesApi';
 import type { FormattedCountryDetails, Status } from '../types/country';
+import Loading from '../components/Loading';
 
 const Detail = () => {
   const { code } = useParams();
@@ -35,35 +36,7 @@ const Detail = () => {
     }
   };
 
-  const radius = 20;
-  const circumference = 2 * Math.PI * radius;
-
-  if (status === 'loading') {
-    return (
-      <section className="flex items-center justify-center gap-3 pt-4 font-(family-name:--FF) text-sm text-(--COLOR-TEXT-PRIMARY) motion-safe:transition-colors motion-safe:duration-150 motion-safe:ease-in-out">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 50 50"
-          className="arc-spinner relative"
-          role="status"
-          aria-label="Loading"
-        >
-          <circle
-            cx="25"
-            cy="25"
-            r={radius}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="4"
-            strokeLinecap="round"
-            strokeDasharray={`${circumference * 0.35} ${circumference}`}
-          />
-        </svg>
-        <p className="blink font-light">Loading country details...</p>
-      </section>
-    );
-  }
+  if (status === 'loading') return <Loading page="detail" />;
 
   if (status === 'fail') {
     return (
