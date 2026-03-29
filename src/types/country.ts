@@ -80,3 +80,5 @@ export type FormattedCountryBorders = {
   name: string;
   cca3: string;
 };
+
+export type Page = 'home' | 'detail';
