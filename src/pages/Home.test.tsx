@@ -109,4 +109,29 @@ describe('Home Page Tests', () => {
     const countryCards = screen.queryAllByRole('link');
     expect(countryCards).toHaveLength(0);
   });
+
+  test('renders error state when fetching fails', async () => {
+    mockedUseCountries.mockReturnValue({
+      ...baseMock,
+      filteredCountries: [],
+      status: 'fail',
+    });
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const errorMessage = await screen.findByText(
+      /failed to fetch country data/i,
+    );
+    expect(errorMessage).toBeInTheDocument();
+
+    const loadingMessage = screen.queryByText(/loading countries/i);
+    expect(loadingMessage).not.toBeInTheDocument();
+
+    const countryCards = screen.queryAllByRole('link');
+    expect(countryCards).toHaveLength(0);
+  });
 });
