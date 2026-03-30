@@ -57,10 +57,12 @@ describe('Home Page Tests', () => {
     );
 
     const phCard = await screen.findByRole('link', { name: /philippines/i });
-    const jpCard = await screen.findByRole('link', { name: /japan/i });
-    const countryCards = await screen.findAllByRole('link');
     expect(phCard).toBeInTheDocument();
+
+    const jpCard = await screen.findByRole('link', { name: /japan/i });
     expect(jpCard).toBeInTheDocument();
+
+    const countryCards = await screen.findAllByRole('link');
     expect(countryCards).toHaveLength(2);
   });
 
@@ -79,8 +81,32 @@ describe('Home Page Tests', () => {
     );
 
     const emptyMessage = await screen.findByText(/no matching countries/i);
-    const countryCards = screen.queryAllByRole('link');
     expect(emptyMessage).toBeInTheDocument();
+
+    const countryCards = screen.queryAllByRole('link');
+    expect(countryCards).toHaveLength(0);
+  });
+
+  test('renders loading state when status is loading', async () => {
+    mockedUseCountries.mockReturnValue({
+      ...baseMock,
+      filteredCountries: [],
+      status: 'loading',
+    });
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const loadingMessage = await screen.findByText(/loading countries/i);
+    expect(loadingMessage).toBeInTheDocument();
+
+    const emptyMessage = screen.queryByText(/no matching countries/i);
+    expect(emptyMessage).not.toBeInTheDocument();
+
+    const countryCards = screen.queryAllByRole('link');
     expect(countryCards).toHaveLength(0);
   });
 });
