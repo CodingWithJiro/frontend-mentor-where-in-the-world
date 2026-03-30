@@ -58,7 +58,29 @@ describe('Home Page Tests', () => {
 
     const phCard = await screen.findByRole('link', { name: /philippines/i });
     const jpCard = await screen.findByRole('link', { name: /japan/i });
+    const countryCards = await screen.findAllByRole('link');
     expect(phCard).toBeInTheDocument();
     expect(jpCard).toBeInTheDocument();
+    expect(countryCards).toHaveLength(2);
+  });
+
+  test('renders empty state when no countries are available', async () => {
+    mockedUseCountries.mockReturnValue({
+      ...baseMock,
+      filteredCountries: [],
+      isEmpty: true,
+      searchInput: 'asdfghjkl',
+    });
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const emptyMessage = await screen.findByText(/no matching countries/i);
+    const countryCards = screen.queryAllByRole('link');
+    expect(emptyMessage).toBeInTheDocument();
+    expect(countryCards).toHaveLength(0);
   });
 });
