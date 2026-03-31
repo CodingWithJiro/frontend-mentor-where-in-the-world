@@ -194,4 +194,25 @@ describe('Home Page Tests', () => {
 
     expect(handleFilterOpenMock).toHaveBeenCalledTimes(1);
   });
+
+  test('calls handleSearch when typing on search input', async () => {
+    const user = userEvent.setup();
+    const handleSearchMock = vi.fn();
+
+    mockedUseCountries.mockReturnValue({
+      ...baseMock,
+      handleSearch: handleSearchMock,
+    });
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const searchInput = await screen.findByRole('searchbox');
+
+    await user.type(searchInput, 'phi');
+    expect(handleSearchMock).toHaveBeenCalledTimes(3);
+  });
 });
