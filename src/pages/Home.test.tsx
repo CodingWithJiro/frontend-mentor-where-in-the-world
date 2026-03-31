@@ -134,4 +134,39 @@ describe('Home Page Tests', () => {
     const countryCards = screen.queryAllByRole('link');
     expect(countryCards).toHaveLength(0);
   });
+
+  test('renders search and filter controls', async () => {
+    mockedUseCountries.mockReturnValue({ ...baseMock, isFilterOpen: true });
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const searchInput = await screen.findByRole('searchbox');
+    expect(searchInput).toBeInTheDocument();
+
+    const filterButton = await screen.findByRole('button', {
+      name: /filter by region/i,
+    });
+    expect(filterButton).toBeInTheDocument();
+
+    const africaButton = await screen.findByRole('button', { name: /africa/i });
+    const americaButton = await screen.findByRole('button', {
+      name: /america/i,
+    });
+    const asiaButton = await screen.findByRole('button', { name: /asia/i });
+    const europeButton = await screen.findByRole('button', { name: /europe/i });
+    const oceaniaButton = await screen.findByRole('button', {
+      name: /oceania/i,
+    });
+    expect(africaButton).toBeInTheDocument();
+    expect(americaButton).toBeInTheDocument();
+    expect(asiaButton).toBeInTheDocument();
+    expect(europeButton).toBeInTheDocument();
+    expect(oceaniaButton).toBeInTheDocument();
+
+    screen.debug();
+  });
 });
