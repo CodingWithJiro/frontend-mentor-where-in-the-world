@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import useCountries from '../hooks/useCountries';
 import Home from './Home';
 import type { Mock } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
 const mockedUseCountries = useCountries as Mock;
 const baseMock = {
@@ -168,5 +169,29 @@ describe('Home Page Tests', () => {
     expect(oceaniaButton).toBeInTheDocument();
 
     screen.debug();
+  });
+
+  test('calls handleFilterOpen when filter button is clicked', async () => {
+    const user = userEvent.setup();
+    const handleFilterOpenMock = vi.fn();
+
+    mockedUseCountries.mockReturnValue({
+      ...baseMock,
+      handleFilterOpen: handleFilterOpenMock,
+    });
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const filterButton = await screen.findByRole('button', {
+      name: /filter by region/i,
+    });
+
+    await user.click(filterButton);
+
+    expect(handleFilterOpenMock).toHaveBeenCalledTimes(1);
   });
 });
