@@ -97,4 +97,23 @@ describe('getFormattedCountryListData', () => {
     const result = getFormattedCountryListData(missingCapitalData)[0].capital;
     expect(result).toBe('N/A');
   });
+
+  test('returns empty string for missing alt description', () => {
+    const missingAltData: CountryListData[] = [
+      {
+        flags: {
+          svg: 'https://ph-flag-image.com/',
+        },
+        name: {
+          common: 'Philippines',
+        },
+        population: 150_000_000,
+        region: 'Asia',
+        capital: ['Manila'],
+        cca3: 'PHL',
+      },
+    ];
+    const result = getFormattedCountryListData(missingAltData)[0].flagAlt;
+    expect(result).toBe('');
+  });
 });
