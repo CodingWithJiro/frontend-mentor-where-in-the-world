@@ -29,7 +29,7 @@ const Loading = ({ page }: LoadingProps) => {
           strokeDasharray={`${circumference * 0.35} ${circumference}`}
         />
       </svg>
-      <p className="blink font-light">
+      <p className="blink font-light" role="status">
         {page === 'detail' && 'Loading country details...'}
         {page === 'home' && 'Loading countries...'}
       </p>
