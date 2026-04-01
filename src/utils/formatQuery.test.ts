@@ -15,4 +15,9 @@ describe('getFormattedQuery', () => {
     const result = getFormattedQuery('           ');
     expect(result).toBe('');
   });
+
+  test('returns same string if already trimmed and lowercase', () => {
+    const result = getFormattedQuery('japan');
+    expect(result).toBe('japan');
+  });
 });
