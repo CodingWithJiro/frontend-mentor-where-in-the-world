@@ -2,6 +2,8 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
 import userEvent from '@testing-library/user-event';
+import { server } from '../mocks/server';
+import { http, HttpResponse } from 'msw';
 
 describe('Home Page Integration Tests', () => {
   test('shows loading state, then renders countries', async () => {
@@ -43,6 +45,33 @@ describe('Home Page Integration Tests', () => {
     await waitFor(() => {
       const jpCard = screen.queryByRole('link', { name: /japan/i });
       expect(jpCard).not.toBeInTheDocument();
+    });
+  });
+
+  test('shows error message when API fails', async () => {
+    server.use(
+      http.get('https://restcountries.com/v3.1/all', () => {
+        return new HttpResponse(null, { status: 500 });
+      }),
+    );
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const loadingMessage = screen.getByText(/loading countries/i);
+    expect(loadingMessage).toBeInTheDocument();
+
+    const errorMessage = await screen.findByText(
+      /failed to fetch country data/i,
+    );
+    expect(errorMessage).toBeInTheDocument();
+
+    await waitFor(() => {
+      const loadingMessage = screen.queryByText(/loading countries/i);
+      expect(loadingMessage).not.toBeInTheDocument();
     });
   });
 });
