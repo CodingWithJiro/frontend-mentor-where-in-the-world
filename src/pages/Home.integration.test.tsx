@@ -79,4 +79,30 @@ describe('Home Page Integration Tests', () => {
       expect(loadingMessage).not.toBeInTheDocument();
     });
   });
+
+  test('filters and displays countries on user region select', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const filterButton = await screen.findByRole('button', {
+      name: /filter by region/i,
+    });
+    await user.click(filterButton);
+
+    const asiaButton = await screen.findByRole('button', { name: /asia/i });
+    await user.click(asiaButton);
+
+    const phCard = await screen.findByRole('link', { name: /philippines/i });
+    const jpCard = await screen.findByRole('link', { name: /japan/i });
+    expect(phCard).toBeInTheDocument();
+    expect(jpCard).toBeInTheDocument();
+
+    const deuCard = screen.queryByRole('link', { name: /germany/i });
+    expect(deuCard).not.toBeInTheDocument();
+  });
 });
