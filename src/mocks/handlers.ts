@@ -29,6 +29,19 @@ export const handlers = [
         capital: ['Toyko'],
         cca3: 'JPN',
       },
+      {
+        flags: {
+          svg: 'https://germany-flag-image.com/',
+          alt: 'Germany alt description.',
+        },
+        name: {
+          common: 'Germany',
+        },
+        population: 150_000_000,
+        region: 'Europe',
+        capital: ['Berlin'],
+        cca3: 'DEU',
+      },
     ]);
   }),
 ];
