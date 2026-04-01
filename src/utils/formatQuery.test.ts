@@ -5,4 +5,9 @@ describe('getFormattedQuery', () => {
     const result = getFormattedQuery('    jAPan        ');
     expect(result).toBe('japan');
   });
+
+  test('returns empty when query is empty', () => {
+    const result = getFormattedQuery('');
+    expect(result).toBe('');
+  });
 });
