@@ -10,4 +10,9 @@ describe('getFormattedQuery', () => {
     const result = getFormattedQuery('');
     expect(result).toBe('');
   });
+
+  test('returns empty when query are only spaces', () => {
+    const result = getFormattedQuery('           ');
+    expect(result).toBe('');
+  });
 });
