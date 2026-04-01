@@ -69,6 +69,11 @@ describe('Home Page Integration Tests', () => {
     );
     expect(errorMessage).toBeInTheDocument();
 
+    const phCard = screen.queryByRole('link', { name: /philippines/i });
+    const jpCard = screen.queryByRole('link', { name: /japan/i });
+    expect(phCard).not.toBeInTheDocument();
+    expect(jpCard).not.toBeInTheDocument();
+
     await waitFor(() => {
       const loadingMessage = screen.queryByText(/loading countries/i);
       expect(loadingMessage).not.toBeInTheDocument();
