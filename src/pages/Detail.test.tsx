@@ -150,4 +150,17 @@ describe('Detail Page Tests', () => {
     const currencies = screen.getByText('Japanese yen, US Dollar');
     expect(currencies).toBeInTheDocument();
   });
+
+  test('renders languages separated with commas', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const languages = screen.getByText('English, Japanese');
+    expect(languages).toBeInTheDocument();
+  });
 });
