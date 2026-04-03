@@ -111,4 +111,17 @@ describe('Detail Page Tests', () => {
     const noBorderMessage = screen.getByText(/no border countries/i);
     expect(noBorderMessage).toBeInTheDocument();
   });
+
+  test('renders population number separated with commas', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const population = screen.getByText('125,800,000');
+    expect(population).toBeInTheDocument();
+  });
 });
