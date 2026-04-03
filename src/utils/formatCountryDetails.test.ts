@@ -80,4 +80,36 @@ describe('getFormattedCountryDetails', () => {
     const { name, nativeName } = result;
     expect(nativeName).toEqual(name);
   });
+
+  test('returns empty string when flag alt is missing', () => {
+    const missingFlagAltData: CountryDetails = {
+      name: {
+        common: 'Japan',
+        nativeName: {
+          jpn: {
+            common: '日本',
+          },
+        },
+      },
+      subregion: 'Eastern Asia',
+      tld: ['.jp'],
+      currencies: {
+        JPY: {
+          name: 'Japanese yen',
+        },
+      },
+      languages: {
+        jpn: 'Japanese',
+      },
+      borders: ['CHN', 'KOR'],
+      flags: {
+        svg: 'https://flagcdn.com/jp.svg',
+      },
+      population: 125_800_000,
+      region: 'Asia',
+      capital: ['Tokyo'],
+    };
+    const result = getFormattedCountryDetails(missingFlagAltData);
+    expect(result.flagAlt).toEqual('');
+  });
 });
