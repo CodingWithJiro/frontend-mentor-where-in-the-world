@@ -163,4 +163,17 @@ describe('Detail Page Tests', () => {
     const languages = screen.getByText('English, Japanese');
     expect(languages).toBeInTheDocument();
   });
+
+  test('renders error message on fail status', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock, status: 'fail' });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const errorMessage = screen.getByText(/failed to fetch country details/i);
+    expect(errorMessage).toBeInTheDocument();
+  });
 });
