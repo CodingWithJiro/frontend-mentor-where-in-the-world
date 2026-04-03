@@ -10,9 +10,9 @@ const baseMock = {
     name: 'Japan',
     nativeName: '日本',
     subregion: 'Eastern Asia',
-    tld: ['.jp'],
-    currencies: ['Japanese yen'],
-    languages: ['Japanese'],
+    tld: ['.jp', '.みんな'],
+    currencies: ['Japanese yen', 'US Dollar'],
+    languages: ['Japanese', 'English'],
     borders: ['CHN', 'KOR'],
     flagImage: 'https://flagcdn.com/jp.svg',
     flagAlt: 'The flag of Japan',
@@ -51,5 +51,32 @@ describe('Detail Page Tests', () => {
 
     const loadingMessage = screen.getByText(/loading country details/i);
     expect(loadingMessage).toBeInTheDocument();
+  });
+
+  test('renders country details after successful fetch', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const flagImage = screen.getByRole('img', {
+      name: /the flag of japan/i,
+    });
+    expect(flagImage).toBeInTheDocument();
+
+    const countryName = screen.getByRole('heading', { name: /japan/i });
+    expect(countryName).toBeInTheDocument();
+
+    const region = screen.getByText(/^asia$/i);
+    expect(region).toBeInTheDocument();
+
+    const subRegion = screen.getByText(/^eastern asia$/i);
+    expect(subRegion).toBeInTheDocument();
+
+    const capital = screen.getByText(/tokyo/i);
+    expect(capital).toBeInTheDocument();
   });
 });
