@@ -50,4 +50,34 @@ describe('getFormattedCountryDetails', () => {
     };
     expect(result).toEqual(expectedResult);
   });
+
+  test('returns country name when native name is missing', () => {
+    const missingNativeNameData: CountryDetails = {
+      name: {
+        common: 'Japan',
+        nativeName: {},
+      },
+      subregion: 'Eastern Asia',
+      tld: ['.jp'],
+      currencies: {
+        JPY: {
+          name: 'Japanese yen',
+        },
+      },
+      languages: {
+        jpn: 'Japanese',
+      },
+      borders: ['CHN', 'KOR'],
+      flags: {
+        svg: 'https://flagcdn.com/jp.svg',
+        alt: 'The flag of Japan',
+      },
+      population: 125_800_000,
+      region: 'Asia',
+      capital: ['Tokyo'],
+    };
+    const result = getFormattedCountryDetails(missingNativeNameData);
+    const { name, nativeName } = result;
+    expect(nativeName).toEqual(name);
+  });
 });
