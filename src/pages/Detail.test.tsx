@@ -95,4 +95,20 @@ describe('Detail Page Tests', () => {
     const southKoreaBorder = screen.getByRole('link', { name: /south korea/i });
     expect(southKoreaBorder).toBeInTheDocument();
   });
+
+  test('renders fallback message when borders are unavailable', () => {
+    mockedUseDetail.mockReturnValue({
+      ...baseMock,
+      country: { ...baseMock.country, borders: [], borderNames: null },
+    });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const noBorderMessage = screen.getByText(/no border countries/i);
+    expect(noBorderMessage).toBeInTheDocument();
+  });
 });
