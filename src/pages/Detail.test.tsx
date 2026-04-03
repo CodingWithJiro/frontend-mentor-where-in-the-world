@@ -79,4 +79,20 @@ describe('Detail Page Tests', () => {
     const capital = screen.getByText(/tokyo/i);
     expect(capital).toBeInTheDocument();
   });
+
+  test('renders country borders when available', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const chinaBorder = screen.getByRole('link', { name: /china/i });
+    expect(chinaBorder).toBeInTheDocument();
+
+    const southKoreaBorder = screen.getByRole('link', { name: /south korea/i });
+    expect(southKoreaBorder).toBeInTheDocument();
+  });
 });
