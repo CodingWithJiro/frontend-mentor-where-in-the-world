@@ -124,4 +124,17 @@ describe('Detail Page Tests', () => {
     const population = screen.getByText('125,800,000');
     expect(population).toBeInTheDocument();
   });
+
+  test('renders top level domains separated with commas', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const tld = screen.getByText('.jp, .みんな');
+    expect(tld).toBeInTheDocument();
+  });
 });
