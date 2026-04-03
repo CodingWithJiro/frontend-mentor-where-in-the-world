@@ -137,4 +137,17 @@ describe('Detail Page Tests', () => {
     const tld = screen.getByText('.jp, .みんな');
     expect(tld).toBeInTheDocument();
   });
+
+  test('renders currencies separated with commas', () => {
+    mockedUseDetail.mockReturnValue({ ...baseMock });
+
+    render(
+      <MemoryRouter>
+        <Detail />
+      </MemoryRouter>,
+    );
+
+    const currencies = screen.getByText('Japanese yen, US Dollar');
+    expect(currencies).toBeInTheDocument();
+  });
 });
