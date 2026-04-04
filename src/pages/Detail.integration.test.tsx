@@ -108,4 +108,28 @@ describe('Detail Page Integration Tests', () => {
     const noBorderMessage = await screen.findByText(/no border countries/i);
     expect(noBorderMessage).toBeInTheDocument();
   });
+
+  test('shows error when country borders fetching fails', async () => {
+    server.use(
+      http.get('https://restcountries.com/v3.1/alpha', () => {
+        return new HttpResponse(null, { status: 500 });
+      }),
+    );
+
+    render(
+      <MemoryRouter initialEntries={['/country/JPN']}>
+        <Routes>
+          <Route path="/country/:code" element={<Detail />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const loadingMessage = screen.getByText(/loading country details/i);
+    expect(loadingMessage).toBeInTheDocument();
+
+    const errorMessage = await screen.findByText(
+      /failed to fetch country details/i,
+    );
+    expect(errorMessage).toBeInTheDocument();
+  });
 });
