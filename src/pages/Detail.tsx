@@ -1,33 +1,12 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { fetchCountryDetails } from '../services/countriesApi';
-import type { FormattedCountryDetails, Status } from '../types/country';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 import Fail from '../components/Fail';
+import useDetail from '../hooks/useDetail';
 
 const Detail = () => {
   const { code } = useParams();
-  const [country, setCountry] = useState<FormattedCountryDetails | null>(null);
-  const [status, setStatus] = useState<Status>('loading');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!code) return;
-
-    const loadDetails = async () => {
-      setStatus('loading');
-
-      try {
-        const data = await fetchCountryDetails(code);
-        setCountry(data);
-        setStatus('success');
-      } catch {
-        setStatus('fail');
-      }
-    };
-
-    loadDetails();
-  }, [code]);
+  const { country, status } = useDetail(code);
 
   const handleBack = () => {
     if (window.history.length > 1) {
