@@ -15,6 +15,29 @@ const Detail = () => {
       navigate('/');
     }
   };
+  const getCurrencies = () => {
+    if (country) {
+      const hasNoCurrency = country.currencies.length === 0;
+
+      if (hasNoCurrency) {
+        return 'N/A';
+      }
+
+      return country.currencies
+        .map((c) => c[0].toUpperCase() + c.slice(1))
+        .join(', ');
+    }
+  };
+  const getLanguages = () => {
+    if (country) {
+      const hasNoLanguages = country.languages.length === 0;
+      if (hasNoLanguages) {
+        return 'N/A';
+      }
+
+      return country.languages.sort().join(', ');
+    }
+  };
 
   if (status === 'loading') return <Loading page="detail" />;
   if (status === 'fail') return <Fail page="detail" />;
@@ -72,12 +95,12 @@ const Detail = () => {
 
                 <p>
                   <span className="font-semibold">Sub Region:</span>{' '}
-                  {country.subregion}
+                  {country.subregion ? country.subregion : 'N/A'}
                 </p>
 
                 <p>
                   <span className="font-semibold">Capital:</span>{' '}
-                  {country.capital}
+                  {country.capital ? country.capital : 'N/A'}
                 </p>
               </div>
 
@@ -89,14 +112,12 @@ const Detail = () => {
 
                 <p>
                   <span className="font-semibold">Currencies:</span>{' '}
-                  {country.currencies
-                    .map((c) => c[0].toUpperCase() + c.slice(1))
-                    .join(', ')}
+                  {getCurrencies()}
                 </p>
 
                 <p>
                   <span className="font-semibold">Languages:</span>{' '}
-                  {country.languages.sort().join(', ')}
+                  {getLanguages()}
                 </p>
               </div>
             </div>
