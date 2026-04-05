@@ -26,6 +26,7 @@
 [![Google Lighthouse](https://img.shields.io/badge/Lighthouse-00B0FF?style=for-the-badge&logo=lighthouse&logoColor=white)](/docs/downloads/lighthouse-performance-report.pdf)
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen)
+![Test Coverage](https://img.shields.io/badge/test%20coverage-96%25-brightgreen)
 ![Learning Path](https://img.shields.io/badge/learning%20path-month%2011-blue)
 ![Views](https://visitor-badge.laobi.icu/badge?page_id=CodingWithJiro.frontend-mentor-where-in-the-world&left_text=repo%20views)
 
@@ -126,13 +127,30 @@ npm run dev
 
 ---
 
-## Testing
+## Testing and Coverage
 
-Open a terminal and type:
+This project includes both unit tests and integration tests using Mock Service Worker (MSW) to simulate real API behavior and validate async data flows.
+
+Run tests:
 
 ```bash
 npm test
 ```
+
+Run tests with coverage:
+
+```bash
+npm test -- --coverage
+```
+
+Coverage Summary:
+
+| _Coverage Type_ | _Result_ |
+| --------------- | -------- |
+| Statements      | 96.29%   |
+| Branches        | 86.45%   |
+| Functions       | 98.43%   |
+| Lines           | 96.53%   |
 
 ---
 
