@@ -18,7 +18,6 @@ const CountryCard = ({
         <img
           src={flagImage}
           alt={flagAlt}
-          loading="lazy"
           className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-in-out"
         />
       </div>
