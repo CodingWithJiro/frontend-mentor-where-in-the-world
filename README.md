@@ -41,7 +41,9 @@ A fully responsive country explorer built with React and TypeScript, featuring d
 
 ## Overview
 
-<!-- INSERT PROJECT OVERVIEW (1-2 PARAGRAPHS) -->
+This project is a production-style implementation of the **[REST Countries API](https://restcountries.com/)** which allows users to explore countries by name, filter by region, and view detailed country information including borders, currencies, and languages.
+
+It emphasizes clean data flow, URL-driven state management, and robust testing using Mock Service Worker (MSW) to simulate real API behavior.
 
 Created as part of the building challenges from **[Frontend Mentor](https://www.frontendmentor.io/)**.
 
