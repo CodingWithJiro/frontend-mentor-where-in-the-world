@@ -25,6 +25,7 @@
 [![Fetch API](https://img.shields.io/badge/REST%20Countries%20API-1976d2?style=for-the-badge)](https://restcountries.com/)
 [![Google Lighthouse](https://img.shields.io/badge/Lighthouse-00B0FF?style=for-the-badge&logo=lighthouse&logoColor=white)](/docs/downloads/lighthouse-performance-report.pdf)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bc0f6448-410a-42ec-af11-d6324cfc265e/deploy-status)](https://where-in-the-world-fm-jiro.netlify.app/)
 ![Status](https://img.shields.io/badge/status-complete-brightgreen)
 ![Test Coverage](https://img.shields.io/badge/test%20coverage-96%25-brightgreen)
 ![Learning Path](https://img.shields.io/badge/learning%20path-month%2011-blue)
