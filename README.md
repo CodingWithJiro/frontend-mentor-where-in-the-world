@@ -51,7 +51,7 @@ Created as part of the building challenges from **[Frontend Mentor](https://www.
 
 ## Live Demo
 
-You can check out the live website **[here](LINK)**
+You can check out the live website **[here](https://where-in-the-world-fm-jiro.netlify.app/)**
 
 ---
 
