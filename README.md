@@ -30,7 +30,7 @@
 
 ## Where In The World - Searh Countries Powered By REST Countries API
 
-<!-- INSERT BRIEF ONE LINER DESCRIPTION -->
+A fully responsive country explorer built with React and TypeScript, featuring dynamic data fetching, URL-driven filtering, and comprehensive testing using MSW.
 
 | _Mobile Preview (375x812)_                                  | _Desktop Preview (1440x960)_                                   |
 | ----------------------------------------------------------- | -------------------------------------------------------------- |
