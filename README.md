@@ -29,7 +29,7 @@
 ![Learning Path](https://img.shields.io/badge/learning%20path-month%2011-blue)
 ![Views](https://visitor-badge.laobi.icu/badge?page_id=CodingWithJiro.frontend-mentor-where-in-the-world&left_text=repo%20views)
 
-## Where In The World - Searh Countries Powered By REST Countries API
+## Where In The World - Search Countries Powered By REST Countries API
 
 A fully responsive country explorer built with React and TypeScript, featuring dynamic data fetching, URL-driven filtering, and comprehensive testing using MSW.
 
