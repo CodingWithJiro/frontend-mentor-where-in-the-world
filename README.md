@@ -44,7 +44,7 @@ A fully responsive country explorer built with React and TypeScript, featuring d
 
 This project is a production-style implementation of the **[REST Countries API](https://restcountries.com/)** which allows users to explore countries by name, filter by region, and view detailed country information including borders, currencies, and languages.
 
-It emphasizes clean data flow, URL-driven state management, and robust testing using Mock Service Worker (MSW) to simulate real API behavior.
+It emphasizes clean data flow, URL-driven state management using React Router, and robust testing using Mock Service Worker (MSW) to simulate real API behavior.
 
 Created as part of the building challenges from **[Frontend Mentor](https://www.frontendmentor.io/)**.
 
@@ -58,7 +58,19 @@ You can check out the live website **[here](https://where-in-the-world-fm-jiro.n
 
 ## Features
 
-<!-- INSERT LIST OF PROJECT FEATURES -->
+- Browse all countries with dynamic data fetched from the **[REST Countries API](https://restcountries.com/)**
+- Search countries with debounced, case-insensitive input
+- Filter countries by region with toggleable dropdown
+- URL-based state management for persistent search and filters using **[React Router](https://reactrouter.com/)**
+- Detailed country pages with dynamic routing (`/country/:code`)
+- Navigate between countries via border country links
+- Light/Dark theme toggle with system preference detection and persistence
+- Optimized rendering using derived state and memoization
+- Clean architecture using service layer, formatter utilities, and custom hooks
+- Full UI state handling (loading, error, empty, success)
+- Comprehensive testing with Vitest, React Testing Library, and MSW
+- Accessibility improvements including semantic structure, ARIA attributes, and keyboard navigation
+- Fully responsive layout with mobile-first design
 
 ---
 
