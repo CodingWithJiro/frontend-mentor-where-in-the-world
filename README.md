@@ -99,9 +99,9 @@ You can check out the live website **[here](https://where-in-the-world-fm-jiro.n
 
 ## Development Workflow
 
-This project uses a **[feature-based branching workflow](https://github.com/CodingWithJiro/frontend-mentor-where-in-the-world/network)** with descriptive commits and **[structured pull requests](REPO_PULL_REQUEST_CLOSED_LINK)**, mirroring professional team collaboration practices:
+This project uses a **[feature-based branching workflow](https://github.com/CodingWithJiro/frontend-mentor-where-in-the-world/network)** with descriptive commits and **[structured pull requests](https://github.com/CodingWithJiro/frontend-mentor-where-in-the-world/pulls?q=is%3Apr+is%3Aclosed)**, mirroring professional team collaboration practices:
 
-[![Network Graph](/public/img/network-graph.png)](https://github.com/CodingWithJiro/REPO_NAME/network)
+[![Network Graph](/public/img/network-graph.png)](https://github.com/CodingWithJiro/frontend-mentor-where-in-the-world/network)
 
 ---
 
