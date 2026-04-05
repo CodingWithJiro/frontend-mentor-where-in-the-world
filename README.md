@@ -138,7 +138,21 @@ npm test
 
 ## What I Learned
 
-<!-- INSERT LIST OF WHAT I LEARNED MAKING THIS PROJECT -->
+- Structured a scalable React application using separation of concerns (API layer, hooks, utilities, UI)
+- Strengthened TypeScript fundamentals including generics, shared types, and strict typing for props and state
+- Learned to design clean data transformation layers to convert complex API responses into UI-ready data
+- Implemented URL-driven state management using `useSearchParams` for persistence and better UX
+- Understood how to design filtering pipelines combining multiple conditions (search + region)
+- Improved performance using derived state and `useMemo` where appropriate
+- Built reusable and accessible UI components with proper semantic HTML and ARIA practices
+- Gained deeper understanding of React Router including nested routes, dynamic routing, and navigation patterns
+- Learned how to handle async data flows with proper loading, error, and empty states
+- Practiced debouncing and syncing UI state with URL state
+- Implemented real-world testing strategies using Vitest and React Testing Library
+- Mastered API mocking using Mock Service Worker (MSW) for integration testing
+- Learned how to simulate full async UI lifecycles and edge cases in tests
+- Improved debugging skills for async rendering and state issues
+- Developed a stronger understanding of frontend architecture and maintainability
 
 ---
 
