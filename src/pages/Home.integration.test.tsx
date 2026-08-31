@@ -50,7 +50,7 @@ describe('Home Page Integration Tests', () => {
 
   test('shows error message when API fails', async () => {
     server.use(
-      http.get('https://restcountries.com/v3.1/all', () => {
+      http.get('https://api.restcountries.com/countries/v5', () => {
         return new HttpResponse(null, { status: 500 });
       }),
     );
@@ -118,18 +118,30 @@ describe('Home Page Integration Tests', () => {
     const searchInput = await screen.findByRole('searchbox');
     await user.type(searchInput, 'phi');
 
+    await screen.findByRole('link', { name: /philippines/i });
+
     const filterButton = await screen.findByRole('button', {
       name: /filter by region/i,
     });
     await user.click(filterButton);
 
-    const asiaButton = await screen.findByRole('button', { name: /asia/i });
+    const asiaButton = await screen.findByRole('button', {
+      name: /asia/i,
+    });
     await user.click(asiaButton);
 
-    const phCard = await screen.findByRole('link', { name: /philippines/i });
-    const jpCard = screen.queryByRole('link', { name: /japan/i });
-    const deuCard = screen.queryByRole('link', { name: /germany/i });
+    const phCard = await screen.findByRole('link', {
+      name: /philippines/i,
+    });
     expect(phCard).toBeInTheDocument();
+
+    const jpCard = screen.queryByRole('link', {
+      name: /japan/i,
+    });
+    const deuCard = screen.queryByRole('link', {
+      name: /germany/i,
+    });
+
     expect(jpCard).not.toBeInTheDocument();
     expect(deuCard).not.toBeInTheDocument();
   });
