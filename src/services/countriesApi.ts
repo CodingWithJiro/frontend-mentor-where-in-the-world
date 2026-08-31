@@ -6,6 +6,7 @@ import type {
 import getFormattedCountryBorders from '../utils/formatCountryBorders';
 import { getFormattedCountryListData } from '../utils/formatCountryData';
 import { getFormattedCountryDetails } from '../utils/formatCountryDetails';
+const API_KEY = import.meta.env.VITE_REST_COUNTRIES_API_KEY;
 
 export const fetchCountryListData = async () => {
   const response = await fetch(
