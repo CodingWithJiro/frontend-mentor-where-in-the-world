@@ -3,49 +3,68 @@ import type { CountryListData } from '../types/country';
 
 const mockData: CountryListData[] = [
   {
-    flags: {
-      svg: 'https://ph-flag-image.com/',
-      alt: 'Philippine alt description.',
+    flag: {
+      url_svg: 'https://ph-flag-image.com/',
+      description: 'Philippine alt description.',
     },
-    name: {
+    names: {
       common: 'Philippines',
     },
     population: 150_000_000,
     region: 'Asia',
-    capital: ['Manila'],
-    cca3: 'PHL',
+    capitals: [
+      {
+        name: 'Manila',
+      },
+    ],
+    codes: {
+      alpha_3: 'PHL',
+    },
   },
   {
-    flags: {
-      svg: 'https://jp-flag-image.com/',
-      alt: 'Japan alt description.',
+    flag: {
+      url_svg: 'https://jp-flag-image.com/',
+      description: 'Japan alt description.',
     },
-    name: {
+    names: {
       common: 'Japan',
     },
     population: 150_000_000,
     region: 'Asia',
-    capital: ['Toyko'],
-    cca3: 'JPN',
+    capitals: [
+      {
+        name: 'Tokyo',
+      },
+    ],
+    codes: {
+      alpha_3: 'JPN',
+    },
   },
   {
-    flags: {
-      svg: 'https://germany-flag-image.com/',
-      alt: 'Germany alt description.',
+    flag: {
+      url_svg: 'https://germany-flag-image.com/',
+      description: 'Germany alt description.',
     },
-    name: {
+    names: {
       common: 'Germany',
     },
     population: 150_000_000,
     region: 'Europe',
-    capital: ['Berlin'],
-    cca3: 'DEU',
+    capitals: [
+      {
+        name: 'Berlin',
+      },
+    ],
+    codes: {
+      alpha_3: 'DEU',
+    },
   },
 ];
 
 describe('getFormattedCountryListData', () => {
   test('formats and sorts country data correctly', () => {
     const result = getFormattedCountryListData(mockData);
+
     const expectedResult = [
       {
         flagImage: 'https://germany-flag-image.com/',
@@ -62,7 +81,7 @@ describe('getFormattedCountryListData', () => {
         name: 'Japan',
         population: 150_000_000,
         region: 'Asia',
-        capital: 'Toyko',
+        capital: 'Tokyo',
         countryCode: 'JPN',
       },
       {
@@ -75,45 +94,59 @@ describe('getFormattedCountryListData', () => {
         countryCode: 'PHL',
       },
     ];
+
     expect(result).toEqual(expectedResult);
   });
 
   test('returns N/A for missing capital', () => {
     const missingCapitalData: CountryListData[] = [
       {
-        flags: {
-          svg: 'https://ph-flag-image.com/',
-          alt: 'Philippine alt description.',
+        flag: {
+          url_svg: 'https://ph-flag-image.com/',
+          description: 'Philippine alt description.',
         },
-        name: {
+        names: {
           common: 'Philippines',
         },
         population: 150_000_000,
         region: 'Asia',
-        capital: [],
-        cca3: 'PHL',
+        capitals: [],
+        codes: {
+          alpha_3: 'PHL',
+        },
       },
     ];
+
     const result = getFormattedCountryListData(missingCapitalData)[0].capital;
+
     expect(result).toBe('N/A');
   });
 
   test('returns empty string for missing alt description', () => {
     const missingAltData: CountryListData[] = [
       {
-        flags: {
-          svg: 'https://ph-flag-image.com/',
+        flag: {
+          url_svg: 'https://ph-flag-image.com/',
+          description: '',
         },
-        name: {
+        names: {
           common: 'Philippines',
         },
         population: 150_000_000,
         region: 'Asia',
-        capital: ['Manila'],
-        cca3: 'PHL',
+        capitals: [
+          {
+            name: 'Manila',
+          },
+        ],
+        codes: {
+          alpha_3: 'PHL',
+        },
       },
     ];
+
     const result = getFormattedCountryListData(missingAltData)[0].flagAlt;
+
     expect(result).toBe('');
   });
 });
