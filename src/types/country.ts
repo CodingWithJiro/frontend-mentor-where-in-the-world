@@ -1,15 +1,19 @@
 export type CountryListData = {
-  flags: {
-    svg: string;
-    alt?: string;
-  };
-  name: {
+  names: {
     common: string;
+  };
+  codes: {
+    alpha_3: string;
+  };
+  capitals?: {
+    name: string;
+  }[];
+  flag: {
+    description: string;
+    url_svg: string;
   };
   population: number;
   region: string;
-  capital?: string[];
-  cca3: string;
 };
 
 export type FormattedCountryListData = {
@@ -23,32 +27,42 @@ export type FormattedCountryListData = {
 };
 
 export type CountryDetails = {
-  name: {
+  names: {
     common: string;
-    nativeName: Record<
+    native: Record<
       string,
       {
         common: string;
+        official: string;
       }
     >;
   };
   subregion: string;
-  tld: string[];
-  currencies: Record<
-    string,
-    {
-      name: string;
-    }
-  >;
-  languages: Record<string, string>;
+  tlds: string[];
+  currencies: {
+    code: string;
+    name: string;
+    symbol: string;
+  }[];
+  languages: {
+    bcp47: string;
+    iso639_1: string;
+    iso639_2b: string;
+    iso639_2t: string;
+    iso639_3: string;
+    name: string;
+    native_name: string;
+  }[];
   borders: string[];
-  flags: {
-    svg: string;
-    alt?: string;
+  flag: {
+    description: string;
+    url_svg: string;
   };
   population: number;
   region: string;
-  capital: string[];
+  capitals: {
+    name: string;
+  }[];
 };
 
 export type FormattedCountryDetails = {
@@ -70,10 +84,12 @@ export type FormattedCountryDetails = {
 export type Status = 'loading' | 'success' | 'fail';
 
 export type CountryBorders = {
-  name: {
+  names: {
     common: string;
   };
-  cca3: string;
+  codes: {
+    alpha_3: string;
+  };
 };
 
 export type FormattedCountryBorders = {
