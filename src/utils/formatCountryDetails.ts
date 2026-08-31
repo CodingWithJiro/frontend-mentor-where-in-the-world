@@ -3,22 +3,22 @@ import type { CountryDetails, FormattedCountryDetails } from '../types/country';
 export function getFormattedCountryDetails(
   data: CountryDetails,
 ): FormattedCountryDetails {
-  const nativeNames = Object.values(data.name.nativeName);
+  const nativeNames = Object.values(data.names.native);
 
   return {
-    name: data.name.common,
+    name: data.names.common,
     nativeName:
-      nativeNames.length === 0 ? data.name.common : nativeNames[0].common,
+      nativeNames.length === 0 ? data.names.common : nativeNames[0].common,
     subregion: data.subregion,
-    tld: data.tld,
-    currencies: Object.values(data.currencies).map((c) => c.name),
-    languages: Object.values(data.languages),
+    tld: data.tlds,
+    currencies: data.currencies.map((currency) => currency.name),
+    languages: data.languages.map((language) => language.name),
     borders: data.borders,
-    flagImage: data.flags.svg,
-    flagAlt: data.flags.alt ?? '',
+    flagImage: data.flag.url_svg,
+    flagAlt: data.flag.description,
     population: data.population,
     region: data.region,
-    capital: data.capital.join(', '),
+    capital: data.capitals.map((capital) => capital.name).join(', '),
     borderNames: null,
   };
 }

@@ -2,37 +2,53 @@ import { getFormattedCountryDetails } from './formatCountryDetails';
 import type { CountryDetails } from '../types/country';
 
 const mockData: CountryDetails = {
-  name: {
+  names: {
     common: 'Japan',
-    nativeName: {
+    native: {
       jpn: {
         common: '日本',
+        official: '日本国',
       },
     },
   },
   subregion: 'Eastern Asia',
-  tld: ['.jp'],
-  currencies: {
-    JPY: {
+  tlds: ['.jp'],
+  currencies: [
+    {
+      code: 'JPY',
       name: 'Japanese yen',
+      symbol: '¥',
     },
-  },
-  languages: {
-    jpn: 'Japanese',
-  },
+  ],
+  languages: [
+    {
+      bcp47: 'ja',
+      iso639_1: 'ja',
+      iso639_2b: 'jpn',
+      iso639_2t: 'jpn',
+      iso639_3: 'jpn',
+      name: 'Japanese',
+      native_name: '日本語',
+    },
+  ],
   borders: ['CHN', 'KOR'],
-  flags: {
-    svg: 'https://flagcdn.com/jp.svg',
-    alt: 'The flag of Japan',
+  flag: {
+    url_svg: 'https://flagcdn.com/jp.svg',
+    description: 'The flag of Japan',
   },
   population: 125_800_000,
   region: 'Asia',
-  capital: ['Tokyo'],
+  capitals: [
+    {
+      name: 'Tokyo',
+    },
+  ],
 };
 
 describe('getFormattedCountryDetails', () => {
   test('formats country details correctly', () => {
     const result = getFormattedCountryDetails(mockData);
+
     const expectedResult = {
       name: 'Japan',
       nativeName: '日本',
@@ -48,68 +64,36 @@ describe('getFormattedCountryDetails', () => {
       capital: 'Tokyo',
       borderNames: null,
     };
+
     expect(result).toEqual(expectedResult);
   });
 
   test('returns country name when native name is missing', () => {
     const missingNativeNameData: CountryDetails = {
-      name: {
-        common: 'Japan',
-        nativeName: {},
+      ...mockData,
+      names: {
+        ...mockData.names,
+        native: {},
       },
-      subregion: 'Eastern Asia',
-      tld: ['.jp'],
-      currencies: {
-        JPY: {
-          name: 'Japanese yen',
-        },
-      },
-      languages: {
-        jpn: 'Japanese',
-      },
-      borders: ['CHN', 'KOR'],
-      flags: {
-        svg: 'https://flagcdn.com/jp.svg',
-        alt: 'The flag of Japan',
-      },
-      population: 125_800_000,
-      region: 'Asia',
-      capital: ['Tokyo'],
     };
+
     const result = getFormattedCountryDetails(missingNativeNameData);
     const { name, nativeName } = result;
+
     expect(nativeName).toEqual(name);
   });
 
-  test('returns empty string when flag alt is missing', () => {
-    const missingFlagAltData: CountryDetails = {
-      name: {
-        common: 'Japan',
-        nativeName: {
-          jpn: {
-            common: '日本',
-          },
-        },
+  test('returns empty string when flag description is missing', () => {
+    const missingFlagDescriptionData: CountryDetails = {
+      ...mockData,
+      flag: {
+        ...mockData.flag,
+        description: '',
       },
-      subregion: 'Eastern Asia',
-      tld: ['.jp'],
-      currencies: {
-        JPY: {
-          name: 'Japanese yen',
-        },
-      },
-      languages: {
-        jpn: 'Japanese',
-      },
-      borders: ['CHN', 'KOR'],
-      flags: {
-        svg: 'https://flagcdn.com/jp.svg',
-      },
-      population: 125_800_000,
-      region: 'Asia',
-      capital: ['Tokyo'],
     };
-    const result = getFormattedCountryDetails(missingFlagAltData);
+
+    const result = getFormattedCountryDetails(missingFlagDescriptionData);
+
     expect(result.flagAlt).toEqual('');
   });
 });
