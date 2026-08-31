@@ -4,8 +4,8 @@ const getFormattedCountryBorders = (
   data: CountryBorders[],
 ): FormattedCountryBorders[] => {
   return data.map((d) => ({
-    name: d.name.common,
-    cca3: d.cca3,
+    name: d.names.common,
+    cca3: d.codes.alpha_3,
   }));
 };
 
