@@ -61,18 +61,37 @@ export const fetchCountryDetails = async (countryCode: string) => {
     return formattedDetails;
   }
 
-  const responseBorders = await fetch(
-    `https://api.restcountries.com/countries/v5?codes.alpha_3=${formattedDetails.borders.join(',')}&response_fields=names.common,codes.alpha_3`,
-    {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    },
+  const borderResponses = await Promise.all(
+    formattedDetails.borders.map((borderCode) =>
+      fetch(
+        `https://api.restcountries.com/countries/v5/codes.alpha_3/${borderCode}?response_fields=names.common,codes.alpha_3`,
+        {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        },
+      ),
+    ),
   );
-  if (!responseBorders.ok) throw new Error('Failed to fetch border names.');
-  const resultBorders = await responseBorders.json();
-  const borders: CountryBorders[] = resultBorders.data.objects;
+
+  const isFailedBorderResponse = borderResponses.some(
+    (response) => !response.ok,
+  );
+
+  if (isFailedBorderResponse) {
+    throw new Error('Failed to fetch border names.');
+  }
+
+  const borderResults = await Promise.all(
+    borderResponses.map((response) => response.json()),
+  );
+
+  const borders: CountryBorders[] = borderResults.flatMap(
+    (result) => result.data.objects,
+  );
+
   const formattedBorders = getFormattedCountryBorders(borders);
+
   formattedDetails.borderNames = formattedBorders;
   return formattedDetails;
 };
